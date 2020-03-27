@@ -20,7 +20,7 @@
 
 <body>
 	
-	<%@ include file="/WEB-INF/views/webPikka/nav.jsp"%>
+	<%@ include file="/WEB-INF/views/pikka/nav.jsp"%>
 	
 	<section>
 		<div class="container-fluid h-100">
@@ -104,7 +104,7 @@
 	<br>	
 	
 	
-	<%@ include file="/WEB-INF/views/webPikka/footer.jsp"%>
+	<%@ include file="/WEB-INF/views/pikka/footer.jsp"%>
 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	

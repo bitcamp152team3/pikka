@@ -19,7 +19,7 @@
 
 <body>
 
-	<jsp:include page="/WEB-INF/views/webPikka/nav.jsp" flush="true" />
+	<jsp:include page="/WEB-INF/views/pikka/nav.jsp" flush="true" />
 
 	<div class="container">
 		<div class="text-center">
@@ -89,6 +89,6 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 
-	<%@ include file="/WEB-INF/views/webPikka/footer.jsp"%>
+	<%@ include file="/WEB-INF/views/pikka/footer.jsp"%>
 </body>
 </html>

@@ -19,7 +19,7 @@
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/webPikka/nav.jsp" %>
+	<%@ include file="/WEB-INF/views/pikka/nav.jsp" %>
 	
 	<div class="plane pb-5">
 		<h2 class="h2text mb-2" style="color: black;">
@@ -154,7 +154,7 @@
 
 	<br>
 	<br>
-	<%@ include file="/WEB-INF/views/webPikka/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/pikka/footer.jsp" %>
 
 </body>
 
