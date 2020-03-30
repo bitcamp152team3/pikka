@@ -11,4 +11,40 @@ public class JspController {
 		
 		return "/pikka/main";
 	}
+	
+	@RequestMapping(value="/login")
+	public String login() {
+		
+		return "/pikka/Login";
+	}
+	
+	@RequestMapping(value="/sign")
+	public String signup() {
+		
+		return "/pikka/SignUp";
+	}
+	
+	@RequestMapping(value="/mypage")
+	public String mypage() {
+		
+		return "/pikka/pageMy";
+	}
+	
+	@RequestMapping(value="/seat")
+	public String seat() {
+		
+		return "/pikka/SeatStatus";
+	}
+	
+	@RequestMapping(value="/exseat")
+	public String exseat() {
+		
+		return "/pikka/exseat";
+	}
+	
+	@RequestMapping(value="/locker")
+	public String locker() {
+		
+		return "/pikka/LockerStatus";
+	}
 }
