@@ -2,12 +2,14 @@ package com.pikka.dao;
 
 import java.util.List;
 
-import com.pikka.domain.User;
+import com.pikka.domain.UserVO;
 
 public interface UserDao {
 	
 	public String getTime();
 	
-	public List<User> getAllid();
+	public List<UserVO> getAllid();
+	
+	public UserVO read(String userId);
 
 }

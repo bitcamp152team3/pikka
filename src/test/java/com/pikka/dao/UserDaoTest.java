@@ -20,7 +20,8 @@ public class UserDaoTest {
 	public void test() {
 		log.info(dao.getTime());
 		
-		dao.getAllid();
+		log.info(dao.read("test1").getAuthList() + "이거다이");
+		
 	}
 	
 }
