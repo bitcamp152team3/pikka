@@ -18,17 +18,16 @@
 	
 	<form class="form-signin" action="/login" method="post">
 	
-	
 
 		<label for="inputEmail" class="sr-only">userId</label> <input
-			type="text" id="username"  name="userId" class="form-control mb-1"
+			type="text" name="username" class="form-control mb-1"
 			placeholder="User Id" required autofocus> <label
 			for="inputPassword" class="sr-only">userPw</label> <input
-			type="password" id="password" name="userPw" class="form-control mb-1"
+			type="password" name="password" class="form-control mb-1"
 			placeholder="Password" required>
 
 		<div class="checkbox mb-1 ml-auto">
-			<label> <input type="checkbox" value="remember-me">
+			<label> <input type="checkbox" name="remember-me">
 				Remember me
 			</label>
 		</div>

@@ -115,19 +115,19 @@
 				</div>
 
 				<div class="modal-body">
-					<form class="form-signin">
+					<form class="form-signin" action="/login" method="post">
 						
 							<label for="inputEmail" class="sr-only">userId</label>
-							<input type="userId" id="userId" class="form-control mb-1" placeholder="User Id" required autofocus> 
+							<input type="text" name="username" class="form-control mb-1" placeholder="User Id" required autofocus> 
 							<label for="inputPassword" class="sr-only">userPw</label> 
-							<input type="userPw" id="userPw" class="form-control mb-1" placeholder="Password" required>
+							<input type="password" name="password" class="form-control mb-1" placeholder="Password" required>
 						
 						<div class="checkbox mb-1 ml-auto">
-							<label> <input type="checkbox" value="remember-me">
+							<label> <input type="checkbox" name="remember-me" value="remember-me">
 								Remember me
 							</label>
 						</div>
-						
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						<button class="btn btn-lg btn-dark btn-block" type="submit">로그인</button>
 						
 						<!-- <p class="mt-5 mb-3 text-muted">&copy; 2020-2022</p> -->

@@ -34,5 +34,17 @@
   from user a left outer join user_auth b on a.userId = b.userId 
   where a.userId = #{userId}
   </select>
+  
+  <insert id="insertUser" >
+  insert 
+  into user ( userId, userPw, userName, userTel )
+  values ( #{userId}, #{userPw}, #{userName}, #{userTel})
+  </insert>
+  
+  <insert id="insertAuth">
+  insert
+  into user_auth ( userId, auth )
+  values ( #{userId}, #{auth})
+  </insert>
   </mapper>
   

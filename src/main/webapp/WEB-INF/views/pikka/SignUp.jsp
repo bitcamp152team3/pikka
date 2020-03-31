@@ -34,7 +34,7 @@
 
 		<div class="row justify-content-center">
 			<div class="col-md-6 col-cs-12 md-auto">
-				<form class="needs-validation" novalidate>
+				<form class="needs-validation" action="/signUp" method="post" novalidate>
 					<hr>
 					<div class="mb-3">
 						<label for="userId">아이디<span class="text-muted">(필수)</span></label>
@@ -63,12 +63,12 @@
 					</div>
 
 
-					<div class="mb-3">
+	<!-- 				<div class="mb-3">
 						<label for="userEmail">이메일 <span class="text-muted">(필수)</span></label>
 						<input type="email" class="form-control" id="userEmail"
 							placeholder="you@example.com">
 						<div class="invalid-feedback">이메일을 입력하세요.</div>
-					</div>
+					</div> -->
 
 					<div class="mb-3">
 						<label for="userTel">전화번호</label> <input type="number"

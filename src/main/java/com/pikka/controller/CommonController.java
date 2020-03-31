@@ -19,7 +19,7 @@ public class CommonController {
 		
 	}
 	
-	@GetMapping("/customLogin")
+	@GetMapping("/pikka/customLogin")
 	public void loginInput(String error, String logout, Model model) {
 		log.info("error : " + error);
 		log.info("logout : " + logout);
