@@ -11,4 +11,19 @@ public class JspController {
 		
 		return "/pikka/main";
 	}
+	
+	@RequestMapping(value = "/LockerStatus")
+	public String goLockerStatus() {
+		
+		return "pikka/LockerStatus";
+	}
+	
+	
+	@RequestMapping(value = "/SeatStatus")
+	public String goSeatStatus() {
+		
+		
+		
+		return "pikka/SeatStatus";
+	}
 }

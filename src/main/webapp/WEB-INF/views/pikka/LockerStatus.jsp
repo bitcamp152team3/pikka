@@ -13,18 +13,19 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/exSeatA.css">
+<link rel="stylesheet" href="css/exLocker.css">
 <link rel="icon" href="icon/booking.png">
 <title>Pikka</title>
 </head>
 
 <body>
-	<%@ include file="/WEB-INF/views/pikka/nav.jsp" %>
-	
+	<%@ include file="/WEB-INF/views/pikka/nav.jsp"%>
+
 	<div class="plane pb-5">
 		<h2 class="h2text mb-2" style="color: black;">
 			<i class="fas fa-door-closed"></i> 사물함 현황
 		</h2>
+		<!-- foreach로 대체////////////////////////// -->
 		<ol class="fuselage">
 			<li class="rows row--1">
 				<ol class="seats" type="A">
@@ -42,9 +43,8 @@
 						for="1F">1F</label></li>
 				</ol>
 			</li>
-
 			<li class="rows row--2">
-				<ol class="seats" type="2A">
+				<ol class="seats" type="A">
 					<li class="seat"><input type="checkbox" id="2A" /> <label
 						for="2A">2A</label></li>
 					<li class="seat"><input type="checkbox" id="2B" /> <label
@@ -59,7 +59,6 @@
 						for="2F">2F</label></li>
 				</ol>
 			</li>
-
 			<li class="rows row--3">
 				<ol class="seats" type="A">
 					<li class="seat"><input type="checkbox" id="3A" /> <label
@@ -142,20 +141,86 @@
 						for="7F">7F</label></li>
 				</ol>
 			</li>
-
 		</ol>
-		<div class="SelectBtn " style="float: right;">
-			<button type="button" style="width: 130px" class="btn btn-dark">선택하기</button>
+
+		<!-- <button type="button" style="width: 130px" class="btn btn-dark">선택하기</button> -->
+		<!-- Button trigger modal -->
+		<div class="SelectBtn " style="float: right; width: 130px;">
+
+			<button type="button" id="scLocBtn" class="btn btn-dark"
+				data-toggle="modal" data-target="#myModal">선택하기</button>
 		</div>
 
 	</div>
 
-	<script	src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<!-- Button trigger modal -->
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">사물함 결제</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">결제하시겠습니까?</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">Ok</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<br>
-	<br>
-	<%@ include file="/WEB-INF/views/pikka/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/pikka/footer.jsp"%>
+	<script
+		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
+
+	<script>
+		var locNo = -1; //체크된 사물함 번호
+		var chkbox = $("input");
+
+		$(document).ready(function() {
+			/* 			console.log(chkbox);
+			 for(i=0;i<chkbox.length;i++) {
+			 console.log(chkbox[i]);
+			 console.log(chkbox[i].checked);
+			 }  */
+	
+			 //체크박스를 클릭하면 locNo
+			$("input").click(function(e) {
+				if (locNo == -1) {
+					locNo = this.id;
+					console.log("선택한 좌석: " + locNo);
+					//$('#'+this.id).attr('disabled', true);
+					$('#myModalLabel').text(locNo + " 사물함 결제");
+				} else if (locNo == this.id) {
+					//기존좌석을 다시 클릭하는 경우 => 체크해제
+					locNo = -1;
+				} else {
+					//다른좌석이 선택되있는 상태에서 또 누를 경우 locNo=1A 처럼 값이 있는 경우
+					alert("이미 사물함을 선택했습니다.");
+					e.preventDefault();
+				}
+			});
+	
+			 //선택하기 버튼 누르면
+			$('#scLocBtn').click(function(e) {
+				if (locNo == -1) { //사물함이 선택되지 않은 상태에서 누를때
+					console.log("locNo:"+ locNo +"   ====> 좌석을 선택하세요." );
+					alert("좌석을 선택하세요.");
+					e.stopPropagation();
+					return;
+				}
+				console.log("결제할 사물함 번호: " +locNo);
+			});
+
+		});
+	</script>
 </body>
 
 </html>
