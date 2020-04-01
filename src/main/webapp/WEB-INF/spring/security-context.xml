@@ -7,7 +7,7 @@
 
 
 <import resource="root-context.xml" />
-
+<!-- 로그인 컨트롤러 관련 커스터마이징 -->
 <bean id="customerUserDetailsService" class="com.pikka.security.CustomerUserDetailsService"/>
 
 <bean id="customLoginSuccess" class="com.pikka.security.CustomLoginSuccessHandler"></bean>
@@ -19,11 +19,12 @@
 <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
 <!-- <security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')"/> -->
 
-<!-- <security:form-login/> -->
 <security:form-login login-page="/pikka/customLogin" authentication-success-handler-ref="customLoginSuccess" />
-<security:form-login login-page="/main"/>
 
-
+<!-- 중복 로그인 방지 -->
+<security:session-management>
+<security:concurrency-control max-sessions="1"/>
+</security:session-management>
 
 <security:access-denied-handler error-page="/accessError"/>
 
@@ -38,8 +39,4 @@
 </security:authentication-provider>
 </security:authentication-manager>
 
-<!-- 
-<security:user-service  >
-<security:user name="member" password="{noop}member" authorities="ROLE_MEMBER" />
-</security:user-service> -->
 </beans>

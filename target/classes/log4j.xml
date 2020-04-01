@@ -14,7 +14,7 @@
 
 	<!-- Application Loggers -->
 	<logger name="com.pikka.controller">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<!-- 3rdparty Loggers -->

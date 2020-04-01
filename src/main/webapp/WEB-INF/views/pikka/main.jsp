@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+	
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -48,14 +51,26 @@
 					</div>
 					<div class="row justify-content-center">
 
-
+					<security:authorize access="isAnonymous()">
 						<button class="btn btn-dark mt-4 mb-4 mr-1" type="button"
 							style="width: 140px" data-toggle="modal"
-							data-target="#exampleModalCenter">로그인</button>
+							data-target="#exampleModalCenter" onclick="location.href='/pikka/customLogin'">로그인</button>
+					</security:authorize>	
 						
+					<security:authorize access="isAuthenticated()">
+					  <form action="/logout" method="post">
+						<button class="btn btn-dark mt-4 mb-4 mr-1" type="submit"
+							style="width: 140px" data-toggle="modal"
+							data-target="#exampleModalCenter" >로그아웃</button>
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+						</form>	
+					</security:authorize>	
+					
+					
+					<security:authorize access="isAnonymous()">
 						<button class="btn btn-dark mt-4 mb-4 mr-2 ml-2" type="submit"
 							style="width: 140px" onclick="location.href ='SignUp'">회원가입</button>
-
+					</security:authorize>	
 					</div>
 				</div>
 
@@ -114,7 +129,9 @@
 					</button>
 				</div>
 
-				<div class="modal-body">
+				<!-- 로그인 모달창 생략  -->
+
+<%-- 				<div class="modal-body">
 					<form class="form-signin" action="/login" method="post">
 						
 							<label for="inputEmail" class="sr-only">userId</label>
@@ -132,7 +149,7 @@
 						
 						<!-- <p class="mt-5 mb-3 text-muted">&copy; 2020-2022</p> -->
 					</form>
-				</div>
+				</div> --%>
 
 			</div>
 		</div>

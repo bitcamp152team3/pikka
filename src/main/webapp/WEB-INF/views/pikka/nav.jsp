@@ -22,8 +22,8 @@
 	<header>
 		<nav class="navbar navbar-expand-lg navbar-light mb-5 "
 			style="background-color: #fce968;">
-			<a class="navbar-brand" href="/"> <img src="icon/booking.png"
-				width="40px"></a>
+			<a class="navbar-brand" href="/main"> <img src="icon/booking.png"
+				width="40px" ></a>
 			<h3 href="/">
 				<b>pikka</b>
 			</h3>

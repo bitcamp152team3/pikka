@@ -5,6 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pikka.dao.UserDao;
+import com.pikka.domain.AuthVO;
 import com.pikka.domain.UserVO;
 
 import lombok.AllArgsConstructor;
@@ -12,17 +13,22 @@ import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
-@AllArgsConstructor
 public class UserServiceImpl implements UserService {
-
-	private UserDao userDao;
 	
-	private BCryptPasswordEncoder bEncoder;
+	@Autowired
+	UserDao userDao;
+	
+	@Autowired
+	BCryptPasswordEncoder bEncoder;
 	
 	@Override
-	public int signUpUser(UserVO vo) {
+	public boolean signUpUser(UserVO vo) {
 		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
-		return userDao.insertUser(vo); 
+		AuthVO auth = new AuthVO();
+		auth.setUserId(vo.getUserId());
+		auth.setAuth("ROLE_MEMBER");
+		
+		return userDao.insertUser(vo) & userDao.insertAuth(auth);
 	}
 
 	

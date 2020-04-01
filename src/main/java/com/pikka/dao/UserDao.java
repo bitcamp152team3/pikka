@@ -13,8 +13,8 @@ public interface UserDao {
 	
 	public UserVO read(String userId);
 	
-	public int insertUser(UserVO vo);
+	public boolean insertUser(UserVO vo);
 	
-	public int insertAuth(AuthVO vo);
+	public boolean insertAuth(AuthVO vo);
 
 }
