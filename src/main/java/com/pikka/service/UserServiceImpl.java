@@ -24,6 +24,8 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean signUpUser(UserVO vo) {
 		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
+		
+		
 		AuthVO auth = new AuthVO();
 		auth.setUserId(vo.getUserId());
 		auth.setAuth("ROLE_MEMBER");

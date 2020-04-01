@@ -9,6 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="icon" href="icon/booking.png">
 <link rel="stylesheet" href="css/style.css">
+
 <title>회원 가입</title>
 
 <!-- Bootstrap core CSS -->
@@ -16,7 +17,6 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
 </head>
-
 <body>
 
 	<jsp:include page="/WEB-INF/views/pikka/nav.jsp" flush="true" />
@@ -39,13 +39,13 @@
 					<hr>
 					<div class="mb-3">
 						<label for="userId">아이디<span class="text-muted">(필수)</span></label>
-						<input type="text" class="form-control" name="userId"
+						<input type="text" class="form-control" id="userId" name="userId"
 							placeholder="영문, 숫자포함 8~12자리 이내">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
 					<div class="mb-3">
 						<label for="userPw">패스워드<span class="text-muted">(필수)</span></label>
-						<input type="password" class="form-control" name="userPw"
+						<input type="password" class="form-control" id="userPw" name="userPw"
 							placeholder="비밀번호 8~12자리 이내">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
@@ -56,24 +56,16 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text">@</span>
 							</div>
-							<input type="text" class="form-control" name="userName"
+							<input type="text" class="form-control" id="userName" name="userName"
 								placeholder="이름을 입력하세요 ex)홍길동" required>
 							<div class="invalid-feedback" style="width: 100%;">이름을
 								입력하세요.</div>
 						</div>
 					</div>
 
-
-					<!-- 				<div class="mb-3">
-						<label for="userEmail">이메일 <span class="text-muted">(필수)</span></label>
-						<input type="email" class="form-control" id="userEmail"
-							placeholder="you@example.com">
-						<div class="invalid-feedback">이메일을 입력하세요.</div>
-					</div> -->
-
 					<div class="mb-3">
 						<label for="userTel">전화번호</label> <input type="number"
-							class="form-control" name="userTel" placeholder="010-0000-0000"
+							class="form-control" id="userTel" name="userTel" placeholder="010-0000-0000"
 							required>
 						<div class="invalid-feedback">전화번호를 입력하세요</div>
 					</div>
@@ -98,6 +90,7 @@
 			</ul>
 		</footer>
 	</div>
+	<script src="resources/js/signUpValidate.js"></script> 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
 

@@ -20,7 +20,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		// TODO Auto-generated method stub
+
 		log.warn("login success");
 		
 		List<String> roleNames = new ArrayList<>();
@@ -31,11 +31,7 @@ public class CustomLoginSuccessHandler implements AuthenticationSuccessHandler {
 		
 		log.warn("role names " + roleNames );
 		
-		/*
-		 * if(roleNames.contains("ROLE_MEMBER")) response.sendRedirect("/main"); return;
-		 */
-		
-		response.sendRedirect("/main");
+		response.sendRedirect("/");
 	}
 	
 	

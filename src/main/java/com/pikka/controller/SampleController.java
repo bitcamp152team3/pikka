@@ -21,9 +21,4 @@ public class SampleController {
 		log.info("멤버만 가능");
 	}
 	
-	@GetMapping("/admin")
-	public void doAdmin() {
-		log.info("주인만 가능");
-	}
-	
 }

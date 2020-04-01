@@ -54,7 +54,7 @@
 					<security:authorize access="isAnonymous()">
 						<button class="btn btn-dark mt-4 mb-4 mr-1" type="button"
 							style="width: 140px" data-toggle="modal"
-							data-target="#exampleModalCenter" onclick="location.href='/pikka/customLogin'">로그인</button>
+							data-target="#exampleModalCenter" onclick="location.href='/customLogin'">로그인</button>
 					</security:authorize>	
 						
 					<security:authorize access="isAuthenticated()">
@@ -113,47 +113,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- Modal -->
-	<div class="modal" id="exampleModalCenter" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header" style="background-color:#fce968;">
-					<h3 class="modal-title " id="exampleModalCenterTitle">
-						<a class="navbar-brand" href="#"> <img src="icon/booking.png"
-							width="40px"></a> <b>pikka</b>
-					</h3>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
 
-				<!-- 로그인 모달창 생략  -->
-
-<%-- 				<div class="modal-body">
-					<form class="form-signin" action="/login" method="post">
-						
-							<label for="inputEmail" class="sr-only">userId</label>
-							<input type="text" name="username" class="form-control mb-1" placeholder="User Id" required autofocus> 
-							<label for="inputPassword" class="sr-only">userPw</label> 
-							<input type="password" name="password" class="form-control mb-1" placeholder="Password" required>
-						
-						<div class="checkbox mb-1 ml-auto">
-							<label> <input type="checkbox" name="remember-me" value="remember-me">
-								Remember me
-							</label>
-						</div>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-						<button class="btn btn-lg btn-dark btn-block" type="submit">로그인</button>
-						
-						<!-- <p class="mt-5 mb-3 text-muted">&copy; 2020-2022</p> -->
-					</form>
-				</div> --%>
-
-			</div>
-		</div>
-	</div>
 	<br>
 	<br>
 	<br>	

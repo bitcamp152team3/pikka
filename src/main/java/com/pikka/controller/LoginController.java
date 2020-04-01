@@ -1,5 +1,9 @@
 package com.pikka.controller;
 
+import java.io.UnsupportedEncodingException;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +25,8 @@ public class LoginController {
 	
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
 	public String signUpProcess(UserVO vo) {
-		
 		log.info(vo);
-		if(userService.signUpUser(vo)) 	return "redirect:/main";
+		if(userService.signUpUser(vo)) 	return "redirect:/";
 			
 		return "pikka/customLogin";
 	}
