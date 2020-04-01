@@ -12,7 +12,7 @@ public interface LockerTicketDao {
 	public LockerTicket get(String userId);
 	
 	//유저로 검색해서 가져올껴?
-	//이용권 만료시 삭제
+	//이용권 만료시 삭제?
 	public int delete(String userId);
 	
 	//이용권 변경해야할 때?? 언제쓰냐 이걸?
