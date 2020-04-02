@@ -21,6 +21,7 @@
 
 <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess" />
 
+
 <!-- 중복 로그인 방지 -->
 <security:session-management>
 <security:concurrency-control max-sessions="1"/>

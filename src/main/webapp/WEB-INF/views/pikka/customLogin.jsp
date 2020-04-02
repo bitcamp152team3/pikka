@@ -37,14 +37,14 @@
 					novalidate>
 					<hr>
 					<div class="mb-3">
-						<label for="userId">아이디<span class="text-muted"></span></label>
-						<input type="text" class="form-control" name="username"
+						<label for="userId">아이디<span class="text-muted"></span></label> <input
+							type="text" class="form-control" name="username"
 							placeholder="PASSWORD">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
 					<div class="mb-3">
-						<label for="userPw">패스워드<span class="text-muted"></span></label>
-						<input type="password" class="form-control" name="password"
+						<label for="userPw">패스워드<span class="text-muted"></span></label> <input
+							type="password" class="form-control" name="password"
 							placeholder="ID">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
@@ -52,7 +52,13 @@
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 
-					<button class="btn btn-dark btn-lg btn-block" type="submit"> 로그인 </button>
+					<div class="checkbox mb-1 ml-auto">
+						<label> <input type="checkbox" name="remember-me">
+							Remember me
+						</label>
+					</div>
+					<button class="btn btn-dark btn-lg btn-block" type="submit">
+						로그인</button>
 
 				</form>
 			</div>
