@@ -30,13 +30,9 @@ public class LockerServiceImpl implements LockerService {
 	}
 
 	@Override
-	public boolean lockerStateUse(String lockerNo) {
-		return false;
-	}
-
-	@Override
-	public boolean lockerStateRefund(String lockerNo) {
-		return false;
+	public boolean updateLocState(Locker locker) {
+		locDao.update(locker);
+		return (locDao.update(locker) ==1);
 	}
 
 	@Override
@@ -53,6 +49,12 @@ public class LockerServiceImpl implements LockerService {
 	public void registerTicket(LockerTicket ticket) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<String> getEndLocker(String today) {
+		List<String> list = locTicketDao.selectEndTicket(today);
+		return list;
 	}
 
 }

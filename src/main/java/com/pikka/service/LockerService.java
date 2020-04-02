@@ -11,12 +11,14 @@ public interface LockerService {
 	//사물함 전체 현황 가져오기
 	public List<Locker> getLockerList();
 	
+	//종료되는 사물함 가져오기
+	public List<String> getEndLocker(String today);
+	
 	//사물함 상태 바꾸기
-	public boolean lockerStateUse(String lockerNo); //state=1으로
-	public boolean lockerStateRefund(String lockerNo); //state=0으로
+	public boolean updateLocState(Locker locker);
 	
 	
-	//이용권 있는지 없는지
+	//이용권 있는지 없는지(2개 합칠수 있는지)
 	public boolean checkTicket(String userId);
 	//고객의 이용권 가져오기
 	public LockerTicket getTicket(String userId);

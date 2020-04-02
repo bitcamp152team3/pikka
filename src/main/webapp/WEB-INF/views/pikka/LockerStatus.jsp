@@ -43,15 +43,15 @@
 		<h2 class="h2text mb-2" style="color: black;">
 			<i class="fas fa-door-closed"></i> 사물함 현황
 		</h2>
-	<!--	${LocList}  -->
-		
-		
-<%-- 		<c:forEach var="list" items = "${LocList}" varStatus= "status">
+		<!--	${LocList}  -->
+
+
+		<%-- 		<c:forEach var="list" items = "${LocList}" varStatus= "status">
 		<input type="hidden" value = "${list}" class="aa">
 		</c:forEach> --%>
-		
-		
-		
+
+
+
 
 		<!-- foreach로 대체////////////////////////// -->
 		<ol class="fuselage">
@@ -100,8 +100,12 @@
 				</div>
 				<div class="modal-body">결제하시겠습니까?</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Ok</button>
+				
+					<form action="/buyTicket" method="post" id="pay">
+					<button type="submit" id = "payOk" class="btn btn-primary" >Ok</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type= "hidden" id = "payLocNO" name = "locNo" value="">
+					</form>
 				</div>
 			</div>
 		</div>
@@ -114,76 +118,57 @@
 
 	<script>
 		var locNo = -1; //체크된 사물함 번호
-		var chkbox = $("input[type=checkbox]");
-		
-		/* var checkLocker = $("input[type=checkbox]"); */
+		var chkbox = $("input[type=checkbox]"); //체크박스 전부 가져오기
+
 		$(document).ready(function() {
-			
-			 $.ajax({
-				type:'post',
-				url:'/getLocker',
-				data:"",
-				contentType:"application/json; charset=utf-8",
-				success:function(data){
-			 		//console.log(data);
-					
-			 		for(var i=0; i<data.length; i++){
-			 			console.log(data[i].lockerNo);
-			 			console.log(data[i].lockerStatus);
-			 			
-			 			if(data[i].lockerStatus == 1){
-			 				$("#"+data[i].lockerNo).attr("disabled", true);
-			 				
-			 			}
-			 		}
+
+			//ajax를 이용해서 사물함 상태 반영
+			$.ajax({
+				type : 'post',
+				url : '/getLocker',
+				data : "",
+				contentType : "application/json; charset=utf-8",
+				success : function(data) {
+					for (var i = 0; i < data.length; i++) {
+						if (data[i].lockerStatus == 1) {
+							$("#" + data[i].lockerNo).attr("disabled", true);
+						}
+					}
 				},
-				error:function(xhr, status, error){
+				error : function(xhr, status, error) {
 					alert(error);
 				}
-			}); 
-			
-			
-			 
-/*  			for(var i=1; i<=locList.length; i++){
-				console.log(i);
-			}  */
-			
-/* 			$.each(${LocList}, function(index, item) {
-				console.log(item);
-			}); */
-
-			/* 			console.log(chkbox);
-			 for(i=0;i<chkbox.length;i++) {
-			 console.log(chkbox[i]);
-			 console.log(chkbox[i].checked);
-			 }  */
+			});
 
 			//체크박스를 클릭하면 locNo
 			$("input").click(function(e) {
 				if (locNo == -1) {
 					locNo = this.id;
 					console.log("선택한 좌석: " + locNo);
-					//$('#'+this.id).attr('disabled', true);
 					$('#myModalLabel').text(locNo + " 사물함 결제");
-				} else if (locNo == this.id) {
-					//기존좌석을 다시 클릭하는 경우 => 체크해제
+				} else if (locNo == this.id) { //기존좌석을 다시 클릭하는 경우 => 체크해제
 					locNo = -1;
-				} else {
-					//다른좌석이 선택되있는 상태에서 또 누를 경우 locNo=1A 처럼 값이 있는 경우
+				} else { //다른좌석이 선택되있는 상태에서 또 누를 경우 locNo=1A 처럼 값이 있는 경우
 					alert("선택된 사물함이 있습니다.");
 					e.preventDefault();
 				}
 			});
 
-			//선택하기 버튼 누르면
+			//선택하기 버튼 눌렀을 때
 			$('#scLocBtn').click(function(e) {
-				if (locNo == -1) { //사물함이 선택되지 않은 상태에서 누를때
-					console.log("locNo:" + locNo + "   ====> 좌석을 선택하세요.");
+				if (locNo == -1) { //사물함이 선택되지 않은 상태일때
 					alert("좌석을 선택하세요.");
 					e.stopPropagation();
 					return;
 				}
 				console.log("결제할 사물함 번호: " + locNo);
+			});
+			
+			$('#payOk').click(function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+				$('#payLocNO').val(locNo);
+				$("#pay").submit();
 			});
 
 		});

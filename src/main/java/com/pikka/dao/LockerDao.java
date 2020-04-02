@@ -13,7 +13,7 @@ public interface LockerDao {
 	public Locker get(String lockerNo);
 	
 	//락커 정보 업데이트
-	public int update(Locker loc);
+	public int update(Locker locker);
 	
 	/* public int updateUse(Locker locker); */
 	

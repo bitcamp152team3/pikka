@@ -4,7 +4,10 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.pikka.dao.LockerTicketDao">
-
+	
+	<select id="selectEndTicket" resultType="string">
+	SELECT lockerNo from lockerTicket where lockerEndDate = #{today}
+	</select>
 
 	<select id="getList" resultType="com.pikka.domain.LockerTicket">
 		select * from lockerTicket
@@ -15,7 +18,7 @@
 	</select>
 
 	<update id="update">
-		UPDATE lockerticket SET 
+		update lockerTicket SET 
 		lockerNo = #{lockerNo}, lockerUseDays = #{lockerUseDays}, 
 		lockerUsePrice = #{lockerUsePrice}, 
 		lockerEndDate = DATE_ADD(#{lockerStartDate}, 

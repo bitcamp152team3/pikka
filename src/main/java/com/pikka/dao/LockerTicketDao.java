@@ -11,6 +11,9 @@ public interface LockerTicketDao {
 	//유저로 검색해서 가져올껴?
 	public LockerTicket get(String userId);
 	
+	//종료되는 사물함 가져오기
+	public List<String> selectEndTicket(String today);
+	
 	//유저로 검색해서 가져올껴?
 	//이용권 만료시 삭제?
 	public int delete(String userId);

@@ -7,14 +7,11 @@ import org.springframework.http.MediaType;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.pikka.domain.Locker;
 import com.pikka.service.LockerService;
 
-import lombok.extern.log4j.Log4j;
 
 @org.springframework.web.bind.annotation.RestController
-@Log4j
 public class RestController {
 	
 	@Autowired

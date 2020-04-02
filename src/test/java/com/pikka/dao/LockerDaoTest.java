@@ -1,5 +1,6 @@
 package com.pikka.dao;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.junit.Test;
@@ -22,7 +23,10 @@ public class LockerDaoTest {
 	
 	@Test
 	public void testGetList() {
-		log.info(dao.getList());
+//		log.info(dao.getList());
+		Date date = new Date();
+		log.info(new SimpleDateFormat("yyyy-MM-dd").format(date));
+
 	}
 	
 	
@@ -36,7 +40,7 @@ public class LockerDaoTest {
 		Locker loc = new Locker();
 		loc.setLockerNo("1A");
 		loc.setLockerStatus(1);
-		log.info("결과: "+dao.update(loc));
+
 		
 
 	}
