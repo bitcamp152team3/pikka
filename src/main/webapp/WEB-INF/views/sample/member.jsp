@@ -12,13 +12,9 @@
 
 
 <security:authentication property="principal"/><br>
-<p>ddddddddddddddddddddddddddddddddddddd</p>
 <security:authentication property="principal.userVO"/><br>
-<p>ddddddddddddddddddddddddddddddddddddd</p>
 <security:authentication property="principal.userVO.userName"/><br>
-<p>ddddddddddddddddddddddddddddddddddddd</p>
 <security:authentication property="principal.userVO.userId"/><br>
-<p>ddddddddddddddddddddddddddddddddddddd</p>
 <security:authentication property="principal.userVO.authList"/><br>
 
 

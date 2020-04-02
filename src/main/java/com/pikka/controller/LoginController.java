@@ -5,6 +5,9 @@ import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +26,14 @@ public class LoginController {
 
 	private UserService userService;
 	
+	@InitBinder
+	public void InitBinder(WebDataBinder dataBinder) {
+		
+	}
+	
+	
 	@RequestMapping(value = "/signUp", method = RequestMethod.POST)
-	public String signUpProcess(UserVO vo) {
+	public String signUpProcess(UserVO vo, BindingResult theBindingResult) {
 		log.info(vo);
 		if(userService.signUpUser(vo)) 	return "redirect:/";
 			

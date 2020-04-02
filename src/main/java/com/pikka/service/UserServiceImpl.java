@@ -23,6 +23,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public boolean signUpUser(UserVO vo) {
+		
+		
+		
 		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
 		
 		
