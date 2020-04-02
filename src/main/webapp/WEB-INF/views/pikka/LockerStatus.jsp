@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -23,8 +23,13 @@
 <body>
 	<%@ include file="/WEB-INF/views/pikka/nav.jsp"%>
 
-<security:authentication property="principal.userVO"/><br>
 
+<input type="text" value="<security:authentication property="principal.UserVO.userId"/>">
+
+
+
+
+	
 	<%-- for문 --%>
 
 
