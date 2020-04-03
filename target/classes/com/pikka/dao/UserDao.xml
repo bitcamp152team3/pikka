@@ -46,5 +46,11 @@
   into user_auth ( userId, auth )
   values ( #{userId}, #{auth})
   </insert>
+  
+  <delete id="deleteUser">
+  delete
+  from user
+  where userId=#{userId}
+  </delete>
   </mapper>
   

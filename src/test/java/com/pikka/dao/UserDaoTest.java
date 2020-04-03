@@ -22,7 +22,6 @@ public class UserDaoTest {
 	@Autowired
 	BCryptPasswordEncoder bEncoder;
 
-	@Test
 	public void test2() {
 		log.info(dao.getTime());
 	}
@@ -44,6 +43,11 @@ public class UserDaoTest {
 
 			log.info(dao.insertAuth(vo1));
 		}
-
+	}
+	
+	@Test
+	public void deleteTest() {
+		
+		log.info(dao.deleteUser("member1234"));
 	}
 }

@@ -37,4 +37,7 @@
 	<mybatis-spring:scan base-package="com.pikka.dao" />
 
 
+	
+	<bean id="customValidator" class="com.pikka.validator.CustomValidator"/>
+
 </beans>

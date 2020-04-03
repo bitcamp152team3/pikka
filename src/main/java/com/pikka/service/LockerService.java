@@ -18,6 +18,7 @@ public interface LockerService {
 	public boolean updateLocState(Locker locker);
 	
 	
+	
 	//이용권 있는지 없는지(2개 합칠수 있는지)
 	public boolean checkTicket(String userId);
 	//고객의 이용권 가져오기

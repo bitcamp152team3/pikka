@@ -24,7 +24,6 @@
 <body>
 	<%@ include file="/WEB-INF/views/pikka/nav.jsp"%>
 
-
 	<input id="checkSC" type="hidden"
 		value="<security:authentication property="principal"/>">
 

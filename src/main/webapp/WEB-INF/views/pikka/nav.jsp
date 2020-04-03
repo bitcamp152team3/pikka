@@ -43,6 +43,9 @@
 					<li class="nav-item"><a class="nav-link" href="LockerStatus">
 							<h5>사물함현황</h5>
 					</a></li>
+					<li class="nav-item"><a class="nav-link" href="myPage">
+							<h5>MyPage</h5>
+					</a></li>
 				</ul>
 			</div>
 		</nav>

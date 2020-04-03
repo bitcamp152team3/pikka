@@ -10,13 +10,18 @@
 </head>
 <body>
 
+<security:authentication property="principal.userVO" var="abc"/><br>
 
 <security:authentication property="principal"/><br>
-<security:authentication property="principal.userVO"/><br>
-<security:authentication property="principal.userVO.userName"/><br>
+==================================<br>
+<security:authentication property="principal.userVO.userName" var="jy"/><br>
+======================================<br>
 <security:authentication property="principal.userVO.userId"/><br>
 <security:authentication property="principal.userVO.authList"/><br>
 
+${jy}<br>
+================<br>
+${abc.userName}
 
 
 </body>

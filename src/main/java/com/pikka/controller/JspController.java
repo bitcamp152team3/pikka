@@ -76,6 +76,7 @@ public class JspController {
 		return "/pikka/seatStatus";
 	}
 
+
 	@Autowired
 	private KakaoPay kakaopay;
 
@@ -130,5 +131,12 @@ public class JspController {
 	 * 
 	 * return "pikka/kakaoPaySuccess"; }
 	 */
+
+
+	
+	@GetMapping("/myPage")
+	public String nav() {
+		return "/pikka/myPage";
+	}
 
 }

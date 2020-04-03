@@ -42,7 +42,8 @@ public class LockerServiceImpl implements LockerService {
 
 	@Override
 	public LockerTicket getTicket(String userId) {
-		return null;
+		
+		return locTicketDao.get(userId);
 	}
 
 	@Override
