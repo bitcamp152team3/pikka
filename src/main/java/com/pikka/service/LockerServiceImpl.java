@@ -47,7 +47,7 @@ public class LockerServiceImpl implements LockerService {
 
 	@Override
 	public void registerTicket(LockerTicket ticket) {
-		// TODO Auto-generated method stub
+		locTicketDao.insert(ticket);
 
 	}
 

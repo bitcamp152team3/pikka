@@ -43,7 +43,7 @@ public class LockerDaoTest {
 		Locker loc = new Locker();
 		loc.setLockerNo("1A");
 		loc.setLockerStatus(1);
-
+		
 		
 
 	}
