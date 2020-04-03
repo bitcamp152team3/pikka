@@ -18,6 +18,7 @@
 <security:http>
 <security:intercept-url pattern="/sample/all" access="permitAll"/>
 <security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')"/>
+<security:intercept-url pattern="/myPage" access="hasRole('ROLE_MEMBER')"/>
 
 <security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess" />
 <security:csrf disabled="true"/>
@@ -31,7 +32,6 @@
 
 <security:remember-me remember-me-parameter="remember-me" data-source-ref="dataSource" token-validity-seconds="604800"/>
 <security:logout logout-url="/logout"  logout-success-url="/" invalidate-session="true" delete-cookies="remember-me,JSESSIONID"/>
-
 </security:http>
 
 <security:authentication-manager>

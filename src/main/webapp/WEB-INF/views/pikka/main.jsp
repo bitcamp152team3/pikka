@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					<div class="row justify-content-center">
-
+					
 					<security:authorize access="isAnonymous()">
 						<button class="btn btn-dark mt-4 mb-4 mr-1" type="button"
 							style="width: 140px" data-toggle="modal"

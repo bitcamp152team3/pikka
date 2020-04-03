@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!doctype html>
 <html lang="kor">
@@ -17,7 +19,6 @@
 
 </head>
 <body>
-
 	<jsp:include page="/WEB-INF/views/pikka/nav.jsp" flush="true" />
 
 	<div class="container">
@@ -59,7 +60,6 @@
 					</div>
 					<button class="btn btn-dark btn-lg btn-block" type="submit">
 						로그인</button>
-
 				</form>
 			</div>
 		</div>

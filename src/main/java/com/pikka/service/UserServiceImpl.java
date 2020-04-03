@@ -23,11 +23,8 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public boolean signUpUser(UserVO vo) {
-		
-		
-		
+	
 		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
-		
 		
 		AuthVO auth = new AuthVO();
 		auth.setUserId(vo.getUserId());
@@ -35,6 +32,14 @@ public class UserServiceImpl implements UserService {
 		
 		return userDao.insertUser(vo) & userDao.insertAuth(auth);
 	}
+
+	@Override
+	public boolean deleteUser(String userId) {
+		
+		return userDao.deleteUser(userId);
+	}
+	
+	
 
 	
 }

@@ -6,4 +6,6 @@ public interface UserService {
 
 	public boolean signUpUser(UserVO vo);
 	
+	public boolean deleteUser(String userId);
+	
 }

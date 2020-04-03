@@ -76,4 +76,9 @@ public class JspController {
 	public String seatStatus() {
 		return "/pikka/seatStatus";
 	}
+	
+	@GetMapping("/myPage")
+	public String nav() {
+		return "/pikka/myPage";
+	}
 }

@@ -23,7 +23,7 @@
 <body>
 	<%@ include file="/WEB-INF/views/pikka/nav.jsp"%>
 
-<security:authentication property="principal.userVO"/><br>
+<security:authentication property="principal"/><br>
 
 	<%-- for문 --%>
 
