@@ -36,9 +36,6 @@ public class KakaoPay {
 	public String kakaoPayReady(PayVO pay) {
 		
 		this.pay= pay;
-		
-		log.info(pay.toString());
-		
 		RestTemplate restTemplate = new RestTemplate();
 		
 		// 서버로 요청할 Header
@@ -52,7 +49,7 @@ public class KakaoPay {
 		params.add("cid", "TC0ONETIME");
 		params.add("partner_order_id", pay.getUserId());
 		params.add("partner_user_id", pay.getUserId());
-		params.add("item_name", Integer.toString(pay.getLocType()));
+		params.add("item_name", Integer.toString(pay.getLocType())+"일권");
 		params.add("quantity", "1");
 		params.add("total_amount", pay.getPrice());
 		params.add("tax_free_amount", "0");
@@ -80,9 +77,7 @@ public class KakaoPay {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return "/pay";
-
 	}
 
 	public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
@@ -110,7 +105,6 @@ public class KakaoPay {
 		params.add("useDays", pay.getUseDays()); //사물함 사용기간 
 		params.add("locNo", pay.getLocNo()); //사물함 번호
 		
-
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 
 		try {
@@ -127,7 +121,6 @@ public class KakaoPay {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
 		return null;
 	}
 }

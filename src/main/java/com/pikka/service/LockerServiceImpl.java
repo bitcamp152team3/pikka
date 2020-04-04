@@ -14,7 +14,6 @@ import lombok.extern.log4j.Log4j;
 @Service
 public class LockerServiceImpl implements LockerService {
 	
-	//mappers
 	@Autowired
 	private LockerDao locDao;
 	@Autowired
@@ -25,7 +24,6 @@ public class LockerServiceImpl implements LockerService {
 	public List<Locker> getLockerList() {
 		log.info("service getLockerList()");
 		List<Locker> list = locDao.getList();
-		
 		return list;
 	}
 
@@ -35,6 +33,18 @@ public class LockerServiceImpl implements LockerService {
 		return (locDao.update(locker) ==1);
 	}
 
+
+	@Override
+	public void registerTicket(LockerTicket ticket) {
+		locTicketDao.insert(ticket);
+	}
+
+	@Override
+	public List<String> getEndLocker(String today) {
+		List<String> list = locTicketDao.selectEndTicket(today);
+		return list;
+	}
+	
 	@Override
 	public boolean checkTicket(String userId) {
 		return false;
@@ -42,20 +52,7 @@ public class LockerServiceImpl implements LockerService {
 
 	@Override
 	public LockerTicket getTicket(String userId) {
-		
 		return locTicketDao.get(userId);
-	}
-
-	@Override
-	public void registerTicket(LockerTicket ticket) {
-		locTicketDao.insert(ticket);
-
-	}
-
-	@Override
-	public List<String> getEndLocker(String today) {
-		List<String> list = locTicketDao.selectEndTicket(today);
-		return list;
 	}
 
 }

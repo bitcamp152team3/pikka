@@ -23,84 +23,91 @@
 <body>
 	<%@ include file="/WEB-INF/views/pikka/nav.jsp"%>
 	<security:authentication property="principal.userVO" var="userVO_sc" />
-	<div class="container">
+	<div class="container mb-5">
 
 
-		<div class="row" style="margin-left: 40px">
-			<div class="col-lg-8">
-				<h3 class="page-header">사물함 결제</h3>
+		<div class="container mb-5">
+			<div class="text-center">
+
+				<a> <img src="icon/booking.png" width="75px" height="75px"></a>
+				<h1>
+					<b>사물함 결제</b>
+				</h1>
+
 			</div>
-		</div>
-		<div class="row" style="margin: 40px;">
-			<div class="col-lg-8">
-				<div class="panel panel-default">
-					<div class="panel-heading"></div>
-					<div class="panel-body">
-						<div class="form-group">
-							<label style="font-size: 21px;">상품 선택</label>
-							<div class="radio" style="margin-left: 15px;">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios1" value="30" checked="checked"> 30일 -
-									5,000원
-								</label>
-							</div>
-							<div class="radio" style="margin-left: 15px;">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios2" value="60"> 60일 - 10,000원
-								</label>
-							</div>
-							<div class="radio" style="margin-left: 15px;">
-								<label> <input type="radio" name="optionsRadios"
-									id="optionsRadios3" value="90"> 90일 - 14,000원
-								</label>
-							</div>
-						</div>
+			<hr>
 
-						<br>
-						<div class="form-group">
-							<label style="font-size: 21px;">결제수단 선택</label>
-							<div style="margin-left: 15px;">
-								<select id="scPayType" class="form-control">
-									<option>카드결제</option>
-									<option>카카오페이</option>
-									<option>무통장입금</option>
-								</select>
-							</div>
-						</div>
-						<br>
+			<div class="mb-3">
+				<label for="selectProduct" style="font-size: 18px;">상품 선택</label>
+			</div>
+			<hr>
+			<div class="radio" style="margin-left: 5px;">
+				<label> <input type="radio" name="optionsRadios" checked="checked"
+					id="optionsRadios1" value="30"> 30일 - 5,000원
+				</label>
+			</div>
+			<div class="radio" style="margin-left: 5px;">
+				<label> <input type="radio" name="optionsRadios"
+					id="optionsRadios2" value="60"> 60일 - 10,000원
+				</label>
+			</div>
+			<div class="radio" style="margin-left: 5px;">
+				<label> <input type="radio" name="optionsRadios"
+					id="optionsRadios3" value="90"> 90일 - 14,000원
+				</label>
+			</div>
+			<hr>
 
-						<div class="form-group">
-							<label style="font-size: 21px;">사물함 이용권 구매 정보</label>
-							<div style="margin-left: 15px;">
-
-								<form action="/" method="post" id="sendPay">
-									사물함 번호: <input type="text" id="locNo" name="locNo"
-										value="${locNo}" readonly style="border: none"> <br>
-									상품: <input type="text" id="locType" name="locType" value="30"
-										readonly style="border: none; width: 50px; text-align: right;">일
-									<br> 가격: <input type="text" id="price" name="price"
-										value="5000" readonly
-										style="border: none; width: 50px; text-align: right;">원<br>
-									사용기간: <input type="text" id="usdDays" name="useDays" value=""
-										readonly style="border: none; width: 500px"> <br>
-									결제수단: <input type="text" id="payType" name="payType"
-										value="카드결제" readonly style="border: none"><br> <input
-										type="hidden" name="userId" style="width: 50px;"
-										value="${userVO_sc.userId}"> <br>
-									<div align="right">
-										<button type="submit" class="btn btn-warning" id="paybtn">결제하기</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-					<!-- /.panel-body -->
+			<div class="form-group">
+				<label style="font-size: 18px;">결제수단 선택</label>
+				<div style="margin-left: 5px;">
+					<select id="scPayType" class="form-control">
+						<option>카드결제</option>
+						<option>네이버페이</option>
+						<option>카카오페이</option>
+					</select>
 				</div>
-				<!-- /.panel -->
 			</div>
-			<!-- /.col-lg-12 -->
+			<hr>
+			<label style="font-size: 18px;">사물함 이용권 구매 정보</label>
+			<hr>
+			<div class="row">
+				<div class="col-md-3 col-xs-6" style="text-align: center;">
+					<img src="icon/card.png" id="img_form_url"
+						style="width: 200px; height: 200px; border-radius: 50%;">
+				</div>
+				<hr>
+				<div class="col-md-9 col-xs-9 mt-3">
+					<hr>
+					<div class="infopay ml-2" style="text-align: left">
+						<form action="/" method="post" id="sendPay">
+							사물함 번호: <input type="text" id="locNo" name="locNo"
+								value="${locNo}" readonly style="border: none"> <br>
+							상품: <input type="text" id="locType" name="locType" value="30"
+								readonly style="border: none; width: 50px; text-align: right;">일
+							<br> 가격: <input type="text" id="price" name="price"
+								value="5000" readonly
+								style="border: none; width: 50px; text-align: right;">원<br>
+							사용기간: <input type="text" id="usdDays" name="useDays" value=""
+								readonly style="border: none; width: 500px"> <br>
+							결제수단: <input type="text" id="payType" name="payType" value="카드결제"
+								readonly style="border: none"><br> <input
+								type="hidden" name="userId" style="width: 50px;"
+								value="${userVO_sc.userId}"> <br>
+							<div align="right">
+								<button type="submit" class="btn btn-warning" id="paybtn">결제하기</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- /.panel-body -->
+			<hr><hr><hr>
 		</div>
+		<!-- /.panel -->
 	</div>
+	<!-- /.col-lg-12 -->
+
 
 
 
@@ -173,6 +180,17 @@
 						var payType = $('#scPayType option:selected').val();
 						//console.log(payType);
 						$('#payType').attr('value', payType);
+						//거기에 맞게 이미지도 변경해줘야함
+						if(payType=="네이버페이"){
+							$('#img_form_url').attr('src', 'icon/naverpay.png');
+						}
+						else if(payType=="카카오페이"){
+							$('#img_form_url').attr('src', 'icon/kakaopay.png');
+						}
+						else if(payType=="카드결제"){
+							$('#img_form_url').attr('src', 'icon/card.png');
+						}
+
 					});
 
 					//결제하기 버튼 누르면
@@ -182,7 +200,10 @@
 						console.log($("#scPayType").val());
 						if ($("#scPayType").val() == "카카오페이") {
 							$("#sendPay").attr("action", "/kakaoPay");
-						} else {
+						}else if($("#scPayType").val() == "카드결제"){
+							$("#sendPay").attr("action", "/cardPay");
+						} 
+						else {
 							alert("결제가 완료되었습니다.");
 						}
 

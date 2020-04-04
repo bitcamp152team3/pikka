@@ -17,6 +17,7 @@ public class RestController {
 	@Autowired
 	private LockerService service;
 	
+	//사물함 List return
 	@RequestMapping(value = "/getLocker", method = RequestMethod.POST,
 			produces = {MediaType.APPLICATION_PROBLEM_JSON_UTF8_VALUE,
 						MediaType.APPLICATION_ATOM_XML_VALUE})

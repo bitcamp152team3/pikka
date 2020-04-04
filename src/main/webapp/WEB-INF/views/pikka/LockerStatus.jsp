@@ -28,44 +28,53 @@
 		value="<security:authentication property="principal"/>">
 
 
-
 	<div class="plane pb-5">
-		<h2 class="h2text mb-2" style="color: black;">
-			<i class="fas fa-door-closed"></i> 사물함 현황
-		</h2>
-		<!--	${LocList}  -->
+	<div class="container-fluid h-100 pb-5">
+		<div class="row row-centered md-5 xs-10">
+			<div class="col-md-12 col-xs-12 text-center col-centered">
+				<div class="plane pb-5">
+					<div class="text-center">
 
+						<a> <img src="icon/booking.png" width="100px" height="100px"></a>
+						<h1>
+							<b>사물함 현황</b>
+						</h1>
 
-		<ol class="fuselage">
-			<c:forEach var="i" begin="1" end="7">
-				<li class="rows row--" ${i}>
-					<ol class="seats" type="A">
-						<li class="seat"><input type="checkbox" id="${i}A" /> <label
-							for="${i}A">${i}A</label></li>
-						<li class="seat"><input type="checkbox" id="${i}B" /> <label
-							for="${i}B">${i}B</label></li>
-						<li class="seat"><input type="checkbox" id="${i}C" /> <label
-							for="${i}C">${i}C</label></li>
-						<li class="seat"><input type="checkbox" id="${i}D" /> <label
-							for="${i}D">${i}D</label></li>
-						<li class="seat"><input type="checkbox" id="${i}E" /> <label
-							for="${i}E">${i}E</label></li>
-						<li class="seat"><input type="checkbox" id="${i}F" /> <label
-							for="${i}F">${i}F</label></li>
+					</div>
+
+					<ol class="fuselage pt-2">
+						<c:forEach var="i" begin="1" end="7">
+							<li class="rows row--" ${i}>
+								<ol class="seats" type="A">
+									<li class="seat"><input type="checkbox" id="${i}A" /> <label
+										for="${i}A">${i}A</label></li>
+									<li class="seat"><input type="checkbox" id="${i}B" /> <label
+										for="${i}B">${i}B</label></li>
+									<li class="seat"><input type="checkbox" id="${i}C" /> <label
+										for="${i}C">${i}C</label></li>
+									<li class="seat"><input type="checkbox" id="${i}D" /> <label
+										for="${i}D">${i}D</label></li>
+									<li class="seat"><input type="checkbox" id="${i}E" /> <label
+										for="${i}E">${i}E</label></li>
+									<li class="seat"><input type="checkbox" id="${i}F" /> <label
+										for="${i}F">${i}F</label></li>
+								</ol>
+							</li>
+						</c:forEach>
 					</ol>
-				</li>
-			</c:forEach>
-		</ol>
 
-		<!-- <button type="button" style="width: 130px" class="btn btn-dark">선택하기</button> -->
-		<!-- Button trigger modal -->
-		<div class="SelectBtn " style="float: right; width: 130px;">
-			<security:authorize access="isAuthenticated()">
-				<button type="button" id="scLocBtn" class="btn btn-dark"
-					data-toggle="modal" data-target="#myModal">선택하기</button>
-			</security:authorize>
+					<!-- <button type="button" style="width: 130px" class="btn btn-dark">선택하기</button> -->
+					<!-- Button trigger modal -->
+					<div class="SelectBtn " style="float: right; width: 130px;">
+						<security:authorize access="isAuthenticated()">
+							<button type="button" id="scLocBtn" class="btn btn-dark"
+								data-toggle="modal" data-target="#myModal">선택하기</button>
+						</security:authorize>
+					</div>
+
+				</div>
+			</div>
 		</div>
-
 	</div>
 
 	<!-- Button trigger modal -->
@@ -107,7 +116,7 @@
 		var chkbox = $("input[type=checkbox]"); //체크박스 전부 가져오기
 
 		$(document).ready(function() {
-
+			
 			var checkSC = $('#checkSC').val();
 			console.log(checkSC);
 

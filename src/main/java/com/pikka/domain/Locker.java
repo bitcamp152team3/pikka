@@ -13,9 +13,6 @@ public class Locker {
 	
 	private String lockerNo;
 	private int lockerStatus;
-	/*
-	 * private String lockerStartDate; private String lockerEndDate;
-	 */
 	
 
 }

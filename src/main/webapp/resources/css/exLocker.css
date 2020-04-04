@@ -2,20 +2,33 @@
 *, *:before, *:after {
   box-sizing: border-box;
 }
+
+.row-centered {
+    text-align:center;
+}
+.col-centered, .fuselage{
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+    text-align: center;
+}
+
 .plane {
-  margin: 70px auto;
-  max-width: 300px;
+  margin: 50px auto;
+  max-width: 420px;
 }
 
 .fuselage {
-  border: 3px solid black;
-  width:430px;
+	border: 3px solid black; 
 }
 
 ol {
   list-style: none;
   padding: 0;
-  margin: ;
+ 
 }
 
 .seats {
@@ -26,15 +39,12 @@ ol {
   font-color: white;
 }
 
-.seat {
-  
-  padding: 5px;
+.seat {  
+  padding: 2px;
   position: relative;
 
 }
-.seat:nth-child(3) {
-  margin-right: 14.28571428571429%;
-}
+
 .seat input[type=checkbox] {
   position: absolute;
   opacity: 0;
