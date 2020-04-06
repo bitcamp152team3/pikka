@@ -42,8 +42,9 @@
 			</div>
 			<hr>
 			<div class="radio" style="margin-left: 5px;">
-				<label> <input type="radio" name="optionsRadios" checked="checked"
-					id="optionsRadios1" value="30"> 30일 - 5,000원
+				<label> <input type="radio" name="optionsRadios"
+					checked="checked" id="optionsRadios1" value="30"> 30일 -
+					5,000원
 				</label>
 			</div>
 			<div class="radio" style="margin-left: 5px;">
@@ -102,7 +103,9 @@
 				</div>
 			</div>
 			<!-- /.panel-body -->
-			<hr><hr><hr>
+			<hr>
+			<hr>
+			<hr>
 		</div>
 		<!-- /.panel -->
 	</div>
@@ -117,7 +120,15 @@
 
 	<script type="text/javascript">
 		$(document).ready(
+
 				function() {
+
+
+					history.pushState(null, null, location.href);
+					window.onpopstate = function() {
+						history.go(1);
+					};
+
 					//날짜더하는 함수
 					function addDays(date, days) {
 						const copy = new Date(Number(date))
@@ -176,22 +187,25 @@
 							});
 
 					//결제수단 누를때
-					$('#scPayType').click(function() {
-						var payType = $('#scPayType option:selected').val();
-						//console.log(payType);
-						$('#payType').attr('value', payType);
-						//거기에 맞게 이미지도 변경해줘야함
-						if(payType=="네이버페이"){
-							$('#img_form_url').attr('src', 'icon/naverpay.png');
-						}
-						else if(payType=="카카오페이"){
-							$('#img_form_url').attr('src', 'icon/kakaopay.png');
-						}
-						else if(payType=="카드결제"){
-							$('#img_form_url').attr('src', 'icon/card.png');
-						}
+					$('#scPayType').click(
+							function() {
+								var payType = $('#scPayType option:selected')
+										.val();
+								//console.log(payType);
+								$('#payType').attr('value', payType);
+								//거기에 맞게 이미지도 변경해줘야함
+								if (payType == "네이버페이") {
+									$('#img_form_url').attr('src',
+											'icon/naverpay.png');
+								} else if (payType == "카카오페이") {
+									$('#img_form_url').attr('src',
+											'icon/kakaopay.png');
+								} else if (payType == "카드결제") {
+									$('#img_form_url').attr('src',
+											'icon/card.png');
+								}
 
-					});
+							});
 
 					//결제하기 버튼 누르면
 					$('#paybtn').click(function(e) {
@@ -200,10 +214,9 @@
 						console.log($("#scPayType").val());
 						if ($("#scPayType").val() == "카카오페이") {
 							$("#sendPay").attr("action", "/kakaoPay");
-						}else if($("#scPayType").val() == "카드결제"){
+						} else if ($("#scPayType").val() == "카드결제") {
 							$("#sendPay").attr("action", "/cardPay");
-						} 
-						else {
+						} else {
 							alert("결제가 완료되었습니다.");
 						}
 

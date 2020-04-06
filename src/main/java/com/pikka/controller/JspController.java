@@ -29,9 +29,12 @@ public class JspController {
 
 	private LockerService service;
 	private PayVO pay;
-
-	@Autowired
 	private KakaoPay kakaopay;
+	
+	@GetMapping("/errors")
+	public String defaultError() {
+		return "/pikka/errors";
+	}
 
 	@RequestMapping(value = "/LockerStatus")
 	public String goLockerStatus(Model model) {
@@ -55,6 +58,7 @@ public class JspController {
 
 	@PostMapping(value = "/buyTicket")
 	public String buyTicket(Model model, String locNo) {
+
 		model.addAttribute("locNo", locNo);
 		return "/pikka/buyTicket";
 	}
@@ -73,8 +77,8 @@ public class JspController {
 	public String nav() {
 		return "/pikka/myPage";
 	}
-	
-	
+
+	/* --------------------카드 결제 관련 --------------------- */
 	@PostMapping("/cardPay")
 	public String cardPay(PayVO pays, Model model) {
 		// 결제성공했으니 이용권 추가
@@ -84,17 +88,14 @@ public class JspController {
 		locTicket.setLockerUseDays(pays.getLocType());
 		locTicket.setLockerUsePrice(Integer.parseInt(pays.getPrice()));
 		service.registerTicket(locTicket);
-		
-		//여기 안됨
+
 		Locker locker = new Locker();
-		locker.setLockerNo(pay.getLocNo());
+		locker.setLockerNo(pays.getLocNo());
 		locker.setLockerStatus(1);
 		service.updateLocState(locker);
-		log.info(service.getTicket(pays.getUserId()  )    );
 		model.addAttribute("ticket", service.getTicket(pays.getUserId()));
 		return "pikka/carPaySuccess";
 	}
-
 
 	/* --------------------카카오 페이 관련 --------------------- */
 	@GetMapping("/kakaoPay")

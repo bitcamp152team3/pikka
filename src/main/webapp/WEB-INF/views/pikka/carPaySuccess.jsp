@@ -36,9 +36,9 @@
 		<h4>구매 내역</h4>
 		<hr>
 		고객명: ${ticket.userId}님 <br> 사물함 번호: ${ticket.lockerNo}<br>
-		상품명: ${ticket.lockerUseDays}일권 - ${ticket.lockerUsePrice}원<br> 사용기간:
-		${ticket.lockerStartDate} ~ ${ticket.lockerEndDate}<br> 결제금액:
-		${ticket.lockerUsePrice}원<br> 결제일시: ${today}<br>
+		상품명: ${ticket.lockerUseDays}일권 - ${ticket.lockerUsePrice}원<br>
+		사용기간: ${ticket.lockerStartDate} ~ ${ticket.lockerEndDate}<br>
+		결제금액: ${ticket.lockerUsePrice}원<br> 결제일시: ${today}<br>
 		<hr>
 		<br />
 		<button type="submit" class="btn btn-warning"
@@ -46,5 +46,6 @@
 	</div>
 
 	<%@ include file="/WEB-INF/views/pikka/footer.jsp"%>
+
 </body>
 </html>
