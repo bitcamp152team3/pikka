@@ -21,5 +21,6 @@ public class UserVO {
 	private String userName;
 	private String userTel;
 	private List<AuthVO> authList;
+	private String userEmail;
 	
 }
