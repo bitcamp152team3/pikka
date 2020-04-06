@@ -52,5 +52,15 @@
   from user
   where userId=#{userId}
   </delete>
+  
+  <update id="updateUser">
+  update user
+  set userName=#{userName}, userTel=#{userTel}
+  </update>
+  
+  <select id="searchUser" resultType="int">
+  select count(*) from user
+  where userId=#{userId}
+  </select>
   </mapper>
   

@@ -45,9 +45,13 @@ public class UserDaoTest {
 		}
 	}
 	
-	@Test
 	public void deleteTest() {
 		
 		log.info(dao.deleteUser("member1234"));
+	}
+	
+	@Test
+	public void searchTest() {
+		log.info(dao.searchUser("member"));
 	}
 }

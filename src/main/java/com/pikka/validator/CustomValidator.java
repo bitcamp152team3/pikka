@@ -1,5 +1,7 @@
 package com.pikka.validator;
 
+import java.util.regex.Pattern;
+
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
@@ -11,7 +13,6 @@ public class CustomValidator implements  Validator{
 	
 	private String userTelRegExp = "^01(?:0|1|[6-9])[.-]?(\\d{4})[.-]?(\\d{4})$";
 	private String userPwRegExp = "^(\\d{4})";
-	
 	
 	@Override
 	public boolean supports(Class clazz) {
@@ -25,14 +26,6 @@ public class CustomValidator implements  Validator{
 		ValidationUtils.rejectIfEmpty(e, "userPw", "Pw를 입력해주세요.");
 		ValidationUtils.rejectIfEmpty(e, "userName", "비밀번호를 입력해주세요.");
 		ValidationUtils.rejectIfEmpty(e, "userTel", "전화번호를 입력해주세요.");
-		
-		/*
-		 * UserVO user = (UserVO)target;
-		 * 
-		 * if(user.getUserPw().matches(userPwRegExp)){
-		 * 
-		 * }
-		 */
 		
 	}
 	
