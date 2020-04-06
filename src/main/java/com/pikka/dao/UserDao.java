@@ -18,5 +18,8 @@ public interface UserDao {
 	public boolean insertAuth(AuthVO vo);
 	
 	public boolean deleteUser(String userId);
-
+	
+	public boolean updateUser(UserVO vo);
+	
+	public int searchUser(String userId);
 }

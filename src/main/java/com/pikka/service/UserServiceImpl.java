@@ -26,17 +26,27 @@ public class UserServiceImpl implements UserService {
 	
 		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
 		
-		AuthVO auth = new AuthVO();
-		auth.setUserId(vo.getUserId());
-		auth.setAuth("ROLE_MEMBER");
-		
-		return userDao.insertUser(vo) & userDao.insertAuth(auth);
+		return userDao.insertUser(vo) & userDao.insertAuth(giveAuth(vo.getUserId()));
 	}
 
 	@Override
 	public boolean deleteUser(String userId) {
 		
 		return userDao.deleteUser(userId);
+	}
+
+	@Override
+	public AuthVO giveAuth(String userId) {
+		AuthVO auth = new AuthVO();
+		auth.setUserId(userId);
+		auth.setAuth("ROLE_MEMBER");
+		return auth;
+	}
+
+	@Override
+	public boolean findUserById(String userId) {
+		
+		return userDao.searchUser(userId)==1 ? true : false ;
 	}
 	
 	

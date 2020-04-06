@@ -40,13 +40,13 @@
 					<div class="mb-3">
 						<label for="userId">아이디<span class="text-muted"></span></label> <input
 							type="text" class="form-control" name="username"
-							placeholder="PASSWORD">
+							placeholder="ID">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
 					<div class="mb-3">
 						<label for="userPw">패스워드<span class="text-muted"></span></label> <input
 							type="password" class="form-control" name="password"
-							placeholder="ID">
+							placeholder="PASSWORD">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
 
@@ -58,6 +58,9 @@
 							Remember me
 						</label>
 					</div>
+					<c:if test="${not empty error}">
+					<div class="alert alert-danger" role="alert">${error}</div>
+					</c:if>
 					<button class="btn btn-dark btn-lg btn-block" type="submit">
 						로그인</button>
 				</form>

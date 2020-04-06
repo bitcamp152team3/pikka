@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,20 +58,16 @@ public class LoginController {
 	public String deleteProcess(String userId) {
 		log.info("삭제할 유저의 ID : " + userId);
 		
-		/*
-		 * Cookie[] cookies = request.getCookies();
-		 * 
-		 * for ( Cookie cookie : cookies ) { log.info(cookie.getName());
-		 * cookie.setMaxAge(0); log.info("쿠키 제거"); response.addCookie(cookie); }
-		 * 
-		 * 
-		 * request.getSession().invalidate();
-		 */
-		
 		lockerService.updateLocState(new Locker(lockerService.getTicket(userId).getLockerNo(),0));
 		
 		log.info("유저 삭제 여부 : " + userService.deleteUser(userId));
 		return "redirect:/logout";
 	}
 	
+	// 아이디 중복 검사
+	@GetMapping("/user/search")
+	public String searcchProcess(String userId) {
+		
+		return "abcd";
+	}
 }
