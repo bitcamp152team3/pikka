@@ -40,4 +40,5 @@
 	
 	<bean id="customValidator" class="com.pikka.validator.CustomValidator"/>
 
+	<bean id="naverLoginBO" class="com.pikka.naver.NaverLoginBO"/>
 </beans>
