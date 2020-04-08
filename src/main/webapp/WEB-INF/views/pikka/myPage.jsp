@@ -26,22 +26,39 @@
 
 	<security:authentication property="principal.userVO" var="userVO_sc" />
 	<div class="container">
-		<div class="text-center">
-
-			<a> <img src="icon/booking.png" width="100px" height="100px"></a>
-			<h1>
-
-				<b>pikka</b>
-			</h1>
-
+		<div class="">
+			<h1>My Page</h1>
+			<hr>
 		</div>
 
+		<div class="">
+			<h4>나의 이용권</h4>
+			<div class="row justify-content-center">
+			좌석 이용권 <br>
+			
+			사물함 이용권 <br>
+			${locTicket}
+			
+			</div>
+			
+			
+			<hr>
+		</div>
+
+
+
+
+		<div class="">
+			<h4>회원 정보</h4>
+		</div>
 		<div class="row justify-content-center">
+
 			<div class="col-md-6 col-cs-12 md-auto">
+
 				<form class="needs-validation" action="/user/modify" method="post">
-					<hr>
+			
 					<div class="mb-3">
-						<label for="userId">아이디<span class="text-muted">(필수)</span></label>
+						<label for="userId">아이디<span class="text-muted"></span></label>
 						<input type="text" class="form-control" id="userId"
 							value="${userVO_sc.userId}" name="userId" readonly>
 					</div>
@@ -49,26 +66,25 @@
 					<div class="mb-3">
 						<label for="userId">이름</label>
 						<div class="input-group">
-							<div class="input-group-prepend">
-								<span class="input-group-text">@</span>
-							</div>
+
 							<input type="text" class="form-control" id="userName"
 								readonly="readonly" name="userName"
 								value="${userVO_sc.userName}">
 
 						</div>
 					</div>
-					<div class="mb-3">
+<%-- 					<div class="mb-3">
 						<label for="userTel">이메일 </label> <input type="text"
-							class="form-control" id="userEmail" value="${userVO_sc.userEmail}">
-					</div>
+							class="form-control" id="userEmail"
+							value="${userVO_sc.userEmail}">
+					</div> --%>
 					<div class="mb-3">
 						<label for="userTel">전화번호 </label> <input type="tel"
 							class="form-control" id="userTel" value="${userVO_sc.userTel}">
 					</div>
 					<hr class="mt-4 mb-4">
 
-					<button data-oper="modfiy" class="btn btn-dark " type="submit"
+					<button data-oper="modfiy" class="btn btn-dark btn-lg btn-block" type="submit"
 						id="userModify">회원 수정</button>
 					<button data-oper="delete" class="btn btn-dark btn-lg btn-block"
 						type="submit" id="userDelete">회원 탈퇴</button>

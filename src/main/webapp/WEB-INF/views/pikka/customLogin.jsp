@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!doctype html>
@@ -39,8 +39,7 @@
 					<hr>
 					<div class="mb-3">
 						<label for="userId">아이디<span class="text-muted"></span></label> <input
-							type="text" class="form-control" name="username"
-							placeholder="ID">
+							type="text" class="form-control" name="username" placeholder="ID">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
 					<div class="mb-3">
@@ -59,11 +58,12 @@
 						</label>
 					</div>
 					<c:if test="${not empty error}">
-					<div class="alert alert-danger" role="alert">${error}</div>
+						<div class="alert alert-danger" role="alert">${error}</div>
 					</c:if>
 					<button class="btn btn-dark btn-lg btn-block" type="submit">
 						로그인</button>
 				</form>
+
 			</div>
 		</div>
 

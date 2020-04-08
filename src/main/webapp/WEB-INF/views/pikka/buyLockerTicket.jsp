@@ -86,17 +86,21 @@
 								value="${locNo}" readonly style="border: none"> <br>
 							상품: <input type="text" id="locType" name="locType" value="30"
 								readonly style="border: none; width: 50px; text-align: right;">일
-							<br> 가격: <input type="text" id="price" name="price"
+							<br> 가격: <input type="text" id="locPrice" name="locPrice"
 								value="5000" readonly
 								style="border: none; width: 50px; text-align: right;">원<br>
-							사용기간: <input type="text" id="usdDays" name="useDays" value=""
+							사용기간: <input type="text" id="locUseDays" name="locUseDays" value=""
 								readonly style="border: none; width: 500px"> <br>
 							결제수단: <input type="text" id="payType" name="payType" value="카드결제"
 								readonly style="border: none"><br> <input
 								type="hidden" name="userId" style="width: 50px;"
 								value="${userVO_sc.userId}"> <br>
+								<input type="hidden" name="productType" value="locker">
 							<div align="right">
+								<button type="button" class="btn btn-warning"
+									onclick="location.href='/LockerStatus'">이전으로</button>
 								<button type="submit" class="btn btn-warning" id="paybtn">결제하기</button>
+
 							</div>
 						</form>
 					</div>
@@ -122,7 +126,6 @@
 		$(document).ready(
 
 				function() {
-
 
 					history.pushState(null, null, location.href);
 					window.onpopstate = function() {
@@ -153,7 +156,7 @@
 					const date = new Date();
 					const newDate = addDays(date, 30);
 
-					$('#usdDays').attr(
+					$('#locUseDays').attr(
 							'value',
 							getFormatDate(date) + " ~ "
 									+ getFormatDate(newDate));
@@ -175,12 +178,12 @@
 									price = "14000";
 								}
 								$('#locType').attr('value', days);
-								$('#price').attr('value', price);
+								$('#locPrice').attr('value', price);
 
 								const date = new Date();
 								const newDate = addDays(date, days);
 
-								$('#usdDays').attr(
+								$('#locUseDays').attr(
 										'value',
 										getFormatDate(date) + " ~ "
 												+ getFormatDate(newDate));
