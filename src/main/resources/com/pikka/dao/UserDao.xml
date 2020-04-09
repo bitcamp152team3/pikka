@@ -37,8 +37,8 @@
   
   <insert id="insertUser" >
   insert 
-  into user ( userId, userPw, userName, userTel, userEmail )
-  values ( #{userId}, #{userPw}, #{userName}, #{userTel}, #{userEmail})
+  into user ( userId, userPw, userName, userTel)
+  values ( #{userId}, #{userPw}, #{userName}, #{userTel})
   </insert>
   
   <insert id="insertAuth">

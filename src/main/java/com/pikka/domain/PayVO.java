@@ -17,12 +17,10 @@ public class PayVO {
 	private String locUseDays; //사용기간 3/8~7/5
 
 	//좌석일때
+	private int seatTicketNo;
 	private String seatNo;
 	private int seatType;
-	private String seatPrice;
-	private LocalTime seatAvailableTime;
-	
-	
-	
+	private int seatPrice;
+
 
 }

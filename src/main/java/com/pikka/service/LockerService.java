@@ -31,8 +31,5 @@ public interface LockerService {
 	
 	//티켓 삭제하기는 보류, 티켓 구매내역 로그가 없으므로
 	
-	
-	
-	
 
 }

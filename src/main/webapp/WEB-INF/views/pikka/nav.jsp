@@ -37,13 +37,14 @@
 					<li class="nav-item active"><a class="nav-link" href="/">
 							<h5>홈</h5> <span class="sr-only">(current)</span>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="SeatStatus">
+					<li class="nav-item">
+						<a class="nav-link" href="/SeatStatus">
 							<h5>좌석현황</h5>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="LockerStatus">
+					<li class="nav-item"><a class="nav-link" href="/LockerStatus">
 							<h5>사물함현황</h5>
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="myPage">
+					<li class="nav-item"><a class="nav-link" href="/myPage">
 							<h5>MyPage</h5>
 					</a></li>
 				</ul>

@@ -41,7 +41,7 @@
 						<div class="col-md-6 col-xs-6 mt-2 mr-1"
 							style="background-color: lightgray; border-style: solid; border-width: 0.5px; width: 300px;">
 							<h4>좌석 현황</h4>
-							<h4>12/20</h4>
+							<h4 id="seatCount"></h4>
 						</div>
 						<div class="col-md-6 col-xs-6 mt-2 mr-1"
 							style="background-color: lightgray; border-style: solid; border-width: 0.5px; width: 300px">
@@ -136,6 +136,19 @@
 				contentType : "application/json; charset=utf-8",
 				success : function(data) {
 					$('#locCount').text(data + "/60");
+				},
+				error : function(xhr, status, error) {
+					alert(error);
+				}
+			});
+			
+			$.ajax({
+				type : 'get',
+				url : '/getCountSeat',
+				data : "",
+				contentType : "application/json; charset=utf-8",
+				success : function(data) {
+					$('#seatCount').text(data + "/25");				
 				},
 				error : function(xhr, status, error) {
 					alert(error);

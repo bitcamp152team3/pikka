@@ -26,16 +26,15 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @Service
 public class KakaoPay {
-	
-	
+
 	private static final String HOST = "https://kapi.kakao.com";
 	private PayVO pay;
 	private KakaoPayReadyVO kakaoPayReadyVO;
 	private KakaoPayApprovalVO kakaoPayApprovalVO;
-	
+
 	public String kakaoPayReady(PayVO pays) {
-		
-		this.pay= pays;
+
+		this.pay = pays;
 		RestTemplate restTemplate = new RestTemplate();
 
 		// 서버로 요청할 Header
@@ -44,9 +43,7 @@ public class KakaoPay {
 		headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 		headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 
-
-		
-		//payType
+		// payType
 		// 서버로 요청할 Body
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 
@@ -55,23 +52,26 @@ public class KakaoPay {
 		params.add("partner_user_id", pay.getUserId());
 		params.add("quantity", "1");
 		params.add("tax_free_amount", "0");
-		params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
-		params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
-		params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
-		
-		if(pay.getProductType().equals("locker")) {
-			params.add("item_name", Integer.toString(pay.getLocType())+"일권");
-			params.add("total_amount", pay.getLocPrice());
-			params.add("useDays", pay.getLocUseDays()); //사물함 사용기간 
-			params.add("locNo", pay.getLocNo()); //사물함 번호
-		}
-		
-		else if(pay.getProductType().equals("seat")) {
 
+		if (pay.getProductType().equals("locker")) {
+			params.add("item_name", Integer.toString(pay.getLocType()) + "일권");
+			params.add("total_amount", pay.getLocPrice());
+			params.add("useDays", pay.getLocUseDays()); // 사물함 사용기간
+			params.add("locNo", pay.getLocNo()); // 사물함 번호
+			params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
+			params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
+			params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
 		}
-		
-		
-		
+
+		if (pay.getProductType().equals("seat")) {
+			params.add("item_name", Integer.toString(pay.getSeatType()) + "시간권");
+			params.add("total_amount", Integer.toString(pay.getSeatPrice()));
+			params.add("seatNo", pay.getSeatNo()); // 사물함 번호
+			params.add("approval_url", "http://localhost:8080/kakaoPaySuccessSeat");
+			params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
+			params.add("fail_url", "http://locaSlhost:8080/kakaoPaySuccessFail");
+		}
+
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 		try {
 			kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body,
@@ -90,7 +90,7 @@ public class KakaoPay {
 	}
 
 	public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
-		
+
 		log.info("KakaoPayInfoVO............................................");
 		log.info("-----------------------------");
 
@@ -107,18 +107,20 @@ public class KakaoPay {
 		params.add("cid", "TC0ONETIME");
 		params.add("tid", kakaoPayReadyVO.getTid());
 		params.add("partner_order_id", pay.getUserId());
-		params.add("partner_user_id", pay.getUserId()); //유저정보
+		params.add("partner_user_id", pay.getUserId()); // 유저정보
 		params.add("pg_token", pg_token);
-		
-		if(pay.getProductType().equals("locker")) {
-		params.add("total_amount", pay.getLocPrice()); //가격
-		params.add("item_name", Integer.toString(pay.getLocType())); //사물함 이용권종류 
-		params.add("useDays", pay.getLocUseDays()); //사물함 사용기간 
-		params.add("locNo", pay.getLocNo()); //사물함 번호
+
+		if (pay.getProductType().equals("locker")) {
+			params.add("total_amount", pay.getLocPrice()); // 가격
+			params.add("item_name", Integer.toString(pay.getLocType())); // 사물함 이용권종류
+			params.add("useDays", pay.getLocUseDays()); // 사물함 사용기간
+			params.add("locNo", pay.getLocNo()); // 사물함 번호
 		}
-		
-		else if(pay.getProductType().equals("seat")) {
-			
+
+		if (pay.getProductType().equals("seat")) {
+			params.add("total_amount", Integer.toString(pay.getSeatPrice())); // 가격
+			params.add("item_name", Integer.toString(pay.getSeatType())); // 사물함 이용권종류		
+			params.add("seatNo", pay.getSeatNo()); // 사물함 번호
 		}
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 

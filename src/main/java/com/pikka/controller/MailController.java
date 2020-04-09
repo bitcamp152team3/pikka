@@ -10,32 +10,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import lombok.extern.log4j.Log4j;
-
 @Controller
 public class MailController {
 
 	@Autowired
 	private JavaMailSender mailSender;
 
-	// mailSending 코드
+	// mailSending 肄붾뱶
 	@RequestMapping(value = "mailSending.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String mailSending(HttpServletRequest request) {
 		
 		String setfrom = "rkskqksk3@gmail.com";
-		String tomail = request.getParameter("tomail"); // 받는 사람 이메일
-		String title = request.getParameter("title"); // 제목
-		String content = request.getParameter("content"); // 내용
+		String tomail = request.getParameter("tomail"); // 諛쏅뒗 �궗�엺 �씠硫붿씪
+		String title = request.getParameter("title"); // �젣紐�
+		String content = request.getParameter("content"); // �궡�슜
 		
 		try {
 			MimeMessage message = mailSender.createMimeMessage();
 			MimeMessageHelper messageHelper = new MimeMessageHelper(message,
 					true, "UTF-8");
 
-			messageHelper.setFrom(setfrom); // 보내는사람 생략하면 정상작동을 안함
-			messageHelper.setTo(tomail); // 받는사람 이메일
-			messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
-			messageHelper.setText(content); // 메일 내용
+			messageHelper.setFrom(setfrom); // 蹂대궡�뒗�궗�엺 �깮�왂�븯硫� �젙�긽�옉�룞�쓣 �븞�븿
+			messageHelper.setTo(tomail); // 諛쏅뒗�궗�엺 �씠硫붿씪
+			messageHelper.setSubject(title); // 硫붿씪�젣紐⑹� �깮�왂�씠 媛��뒫�븯�떎
+			messageHelper.setText(content); // 硫붿씪 �궡�슜
 			
 			mailSender.send(message);
 		} catch (Exception e) {
