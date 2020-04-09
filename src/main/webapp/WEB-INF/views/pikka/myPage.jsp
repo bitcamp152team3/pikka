@@ -33,20 +33,66 @@
 
 		<div class="">
 			<h4>나의 이용권</h4>
+			<br>
 			<div class="row justify-content-center">
-			좌석 이용권 <br>
-			
-			사물함 이용권 <br>
-			${locTicket}
-			
+			 <br>
+				<div class="table-responsive table-bordered">
+					<table class="table">
+						<thead>
+							<tr style="text-align: center;">
+								<th>좌석 이용권 번호</th>
+								<th>좌석 번호</th>
+								<th>사용시간</th>
+								<th>가격</th>
+								<th>시작 시간</th>
+								<th>종료 시간</th>
+								<th>잔여 시간</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="text-align: center;">
+								<td>${seatTicket.seatTicketNo}</td>
+								<td>${seatTicket.seatNo}</td>
+								<td>${seatTicket.seatType}</td>
+								<td>${seatTicket.seatPrice}</td>
+								<td>${seatTicket.seatStartTime}</td>
+								<td>${seatTicket.seatEndTime}</td>
+								<td>${seatTicket.seatAvailableTime}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+
+
+				<br>
+				<div class="table-responsive table-bordered">
+					<table class="table">
+						<thead>
+							<tr style="text-align: center;">
+								<th>사물함 이용권 번호</th>
+								<th>사물함 번호</th>
+								<th>사용일</th>
+								<th>가격</th>
+								<th>시작일</th>
+								<th>종료일</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="text-align: center;">
+								<td>${locTicket.lockerTicketNo}</td>
+								<td>${locTicket.lockerNo}</td>
+								<td>${locTicket.lockerUseDays}</td>
+								<td>${locTicket.lockerUsePrice}</td>
+								<td>${locTicket.lockerStartDate}</td>
+								<td>${locTicket.lockerEndDate}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
 			</div>
-			
-			
 			<hr>
 		</div>
-
-
-
 
 		<div class="">
 			<h4>회원 정보</h4>
@@ -56,10 +102,10 @@
 			<div class="col-md-6 col-cs-12 md-auto">
 
 				<form class="needs-validation" action="/user/modify" method="post">
-			
+
 					<div class="mb-3">
-						<label for="userId">아이디<span class="text-muted"></span></label>
-						<input type="text" class="form-control" id="userId"
+						<label for="userId">아이디<span class="text-muted"></span></label> <input
+							type="text" class="form-control" id="userId"
 							value="${userVO_sc.userId}" name="userId" readonly>
 					</div>
 
@@ -70,28 +116,22 @@
 							<input type="text" class="form-control" id="userName"
 								readonly="readonly" name="userName"
 								value="${userVO_sc.userName}">
-
 						</div>
 					</div>
-<%-- 					<div class="mb-3">
-						<label for="userTel">이메일 </label> <input type="text"
-							class="form-control" id="userEmail"
-							value="${userVO_sc.userEmail}">
-					</div> --%>
 					<div class="mb-3">
 						<label for="userTel">전화번호 </label> <input type="tel"
 							class="form-control" id="userTel" value="${userVO_sc.userTel}">
 					</div>
 					<hr class="mt-4 mb-4">
 
-					<button data-oper="modfiy" class="btn btn-dark btn-lg btn-block" type="submit"
-						id="userModify">회원 수정</button>
+					<button data-oper="modfiy" class="btn btn-dark btn-lg btn-block"
+						type="submit" id="userModify">회원 수정</button>
 					<button data-oper="delete" class="btn btn-dark btn-lg btn-block"
 						type="submit" id="userDelete">회원 탈퇴</button>
-
 				</form>
 			</div>
 		</div>
+
 
 		<script type="text/javascript">
 			$(document).ready(function() {

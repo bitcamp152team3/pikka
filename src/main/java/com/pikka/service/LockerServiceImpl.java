@@ -61,4 +61,10 @@ public class LockerServiceImpl implements LockerService {
 		return locDao.useListCount();
 	}
 
+	@Override
+	public int deleteLocTicket(String lockerNo) {
+		
+		return locTicketDao.delete(lockerNo);
+	}
+
 }

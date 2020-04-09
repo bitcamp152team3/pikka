@@ -2,6 +2,8 @@ package com.pikka.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.pikka.domain.AuthVO;
 import com.pikka.domain.UserVO;
 

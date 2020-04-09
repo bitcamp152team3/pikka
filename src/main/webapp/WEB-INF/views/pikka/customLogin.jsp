@@ -62,6 +62,7 @@
 					</c:if>
 					<button class="btn btn-dark btn-lg btn-block" type="submit">
 						로그인</button>
+						<a href="${naverUrl}">네이버 가즈아</a>
 				</form>
 
 			</div>

@@ -13,4 +13,6 @@ public interface UserService {
 	
 	public boolean findUserById(String userId);
 	
+	public UserVO readUser(String userId);
+	
 }

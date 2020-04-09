@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pikka.dao.SeatTicketDao">
+	<insert id="insert">	
+	INSERT INTO seatTicket(seatNo, userId, seatType, seatPrice, seatStartTime, seatEndTime, seatAvailableTime)
+	VALUES ( #{seatNo}, #{userId}, #{seatType}, #{seatPrice}, NOW(), DATE_ADD(NOW(), INTERVAL #{seatType} HOUR), SUBTIME(DATE_ADD(CURTIME(), Interval 1 hour), CURTIME()));
+	</insert>			
+
+ 	<select id="getUseList" resultType="com.pikka.domain.SeatTicket">
+  		<![CDATA[select * from seatTicket where seatAvailableTime > 0 ORDER BY seatAvailableTime ASC]]>
+  	</select> 
+	<select id="get" resultType="com.pikka.domain.SeatTicket">
+		select * from seatTicket where userId = #{userId}
+	</select>
+	<update id="updateCurrent">	
+		UPDATE seatTicket SET seatStartTime = CURTIME(), 
+		seatAvailableTime = SUBTIME(seatEndTime,CURTIME()) where userId IS NOT NULL
+	</update>
+	
+	<update id="updateOne">
+		UPDATE seat A INNER JOIN seatTicket B ON A.seatNo = B.seatNo SET A.seatStatus = 1
+	</update>
+	
+	<update id="updateZero">
+		 <![CDATA[UPDATE seat A INNER JOIN seatTicket B ON A.seatNo=B.seatNo SET A.seatStatus = 0 WHERE seatAvailableTime <= 0]]>
+	</update>
+
+</mapper>

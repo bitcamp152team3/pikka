@@ -128,9 +128,7 @@
 					for (var i = 0; i < data.length; i++) {
 						if (data[i].lockerStatus == 1) {
 							$("#" + data[i].lockerNo).attr("disabled", true);
-							
 						}
-						
 					}
 				},
 				error : function(xhr, status, error) {

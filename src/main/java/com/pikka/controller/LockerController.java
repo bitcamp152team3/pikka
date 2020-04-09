@@ -4,7 +4,6 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +24,7 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 @Log4j
 public class LockerController {
-
+	
 	private LockerService service;
 	private PayVO pay;
 	private KakaoPay kakaopay;
@@ -50,7 +49,9 @@ public class LockerController {
 		for (String list : endList) {
 			locker.setLockerNo(list);
 			service.updateLocState(locker);
+			service.deleteLocTicket(locker.getLockerNo());
 		}
+		
 		return "/pikka/LockerStatus";
 	}
 

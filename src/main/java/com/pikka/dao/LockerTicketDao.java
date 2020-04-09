@@ -15,13 +15,16 @@ public interface LockerTicketDao {
 	//이용권 구매시 생성
 	public int insert(LockerTicket locTicket);
 	
-
-	/* ---------------쓸지말지 미정인 기능들 --------------*/
+	
 	//이용권 만료시 삭제
-	public int delete(String userId);
+	public int delete(String lockerNo);
+	
+	
+	/* ---------------쓸지말지 미정인 기능들 --------------*/
+
 	//이용권 변경시
 	public int update(LockerTicket locTicket);
-
+	
 	
 	
 

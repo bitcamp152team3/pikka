@@ -34,7 +34,7 @@
 	</insert>
 
 	<delete id="delete">
-		DELETE FROM lockerTicket WHERE userId = #{userId}
+		DELETE FROM lockerTicket WHERE lockerNo = #{lockerNo}
 	</delete>
 
 

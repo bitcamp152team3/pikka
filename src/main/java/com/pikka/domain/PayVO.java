@@ -1,7 +1,5 @@
 package com.pikka.domain;
 
-import java.time.LocalTime;
-
 import lombok.Data;
 
 @Data
@@ -16,13 +14,6 @@ public class PayVO {
 	private String locPrice; //가격
 	private String locUseDays; //사용기간 3/8~7/5
 
-	//좌석일때
-	private String seatNo;
-	private int seatType;
-	private String seatPrice;
-	private LocalTime seatAvailableTime;
-	
-	
-	
+
 
 }

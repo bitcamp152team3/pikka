@@ -37,7 +37,7 @@
   
   <insert id="insertUser" >
   insert 
-  into user ( userId, userPw, userName, userTel )
+  into user ( userId, userPw, userName, userTel)
   values ( #{userId}, #{userPw}, #{userName}, #{userTel})
   </insert>
   

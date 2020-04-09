@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pikka.dao.SeatDao">
+	<select id="seatCount" resultType="int">
+		select count(*) from seat where seatStatus = 1;
+	</select>
+
+	<select id="getSeatList" resultType="com.pikka.domain.Seat">
+		select * from seat
+	</select>
+	<!-- <select id="getUseList" resultType="com.pikka.domain.Seat"> select 
+		seatNo from seat where seatStatus=#{seatStatus} </select> -->
+</mapper>
+  
