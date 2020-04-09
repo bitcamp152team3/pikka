@@ -8,6 +8,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import com.pikka.dao.UserDao;
 import com.pikka.domain.CustomUser;
 import com.pikka.domain.UserVO;
+import com.pikka.service.UserService;
+import com.pikka.service.UserServiceImpl;
 
 import lombok.extern.log4j.Log4j;
 

@@ -42,6 +42,7 @@ public class UserDaoTest {
 			vo1.setUserId(vo.getUserId());
 
 			log.info(dao.insertAuth(vo1));
+			
 		}
 	}
 	
@@ -50,8 +51,12 @@ public class UserDaoTest {
 		log.info(dao.deleteUser("member1234"));
 	}
 	
-	@Test
 	public void searchTest() {
 		log.info(dao.searchUser("member"));
+	}
+	
+	@Test
+	public void findUserTest() {
+		log.info("검색 결과" + dao.searchUser("member"));		
 	}
 }
