@@ -32,13 +32,10 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
-
-
-
-<!-- 	<error-page>
+ 	<error-page>
 		<location>/errors</location>
 	</error-page>
-	 -->
+	 
 	
 	<!-- filter -->
 	<filter>

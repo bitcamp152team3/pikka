@@ -115,9 +115,6 @@
 		var chkbox = $("input[type=checkbox]"); //체크박스 전부 가져오기
 
 		$(document).ready(function() {
-			
-			
-
 			var checkSC = $('#checkSC').val();
 			console.log(checkSC);
 

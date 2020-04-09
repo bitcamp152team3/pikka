@@ -38,7 +38,6 @@ public class LockerController {
 	//사물함 현황 클릭시
 	@RequestMapping(value = "/LockerStatus")
 	public String goLockerStatus(Model model) {
-
 		log.info("------lockerStatus-------");
 		//사물함 만료된 것들 있으면 status변경
 		LocalDate date = LocalDate.now();
@@ -67,24 +66,16 @@ public class LockerController {
 	@PostMapping("/cardPay")
 	public String cardPay(PayVO pays, Model model) {
 		// 결제성공 -> 이용권 추가
-		LockerTicket locTicket = new LockerTicket(pays.getLocNo(), pays.getUserId(),
-				pays.getLocType(), Integer.parseInt(pays.getLocPrice()));
-		service.registerTicket(locTicket);
+		service.registerTicket(new LockerTicket(pays.getLocNo(), pays.getUserId(),
+				pays.getLocType(), Integer.parseInt(pays.getLocPrice())));
 		
-		Locker locker = new Locker(pays.getLocNo(),1);
-		service.updateLocState(locker);
+		service.updateLocState(new Locker(pays.getLocNo(),1));
 		
 		model.addAttribute("ticket", service.getTicket(pays.getUserId()));
 		return "pikka/carPaySuccess";
 	}
 
 	/* --------------------카카오 페이 관련 --------------------- */
-	
-//	@GetMapping("/kakaoPay")
-//	public String kakaoPayGet() {
-//		return "pikka/kakaoPay";
-//	}
-
 	@PostMapping("/kakaoPay")
 	public String kakaoPay(PayVO pays) {
 		this.pay = pays;
@@ -99,13 +90,9 @@ public class LockerController {
 		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
 
 		// 결제성공 -> 이용권 추가
-		LockerTicket locTicket = new LockerTicket(pay.getLocNo(), pay.getUserId(),
-				pay.getLocType(), Integer.parseInt(pay.getLocPrice()));
-		service.registerTicket(locTicket);
-		
-		Locker locker = new Locker(pay.getLocNo(),1);
-		service.updateLocState(locker);
-		
+		service.registerTicket(new LockerTicket(pay.getLocNo(), pay.getUserId(),
+				pay.getLocType(), Integer.parseInt(pay.getLocPrice())));
+		service.updateLocState(new Locker(pay.getLocNo(),1));
 		model.addAttribute("ticket", service.getTicket(principal.getName()));
 		return "pikka/kakaoPaySuccess";
 	}

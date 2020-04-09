@@ -136,7 +136,7 @@
 					function addDays(date, days) {
 						const copy = new Date(Number(date))
 						copy.setDate(date.getDate() + days)
-						return copy
+						return copy;
 					}
 					//날짜 포멧변경 함수
 					function getFormatDate(date1) {
