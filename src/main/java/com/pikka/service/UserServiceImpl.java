@@ -24,7 +24,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean signUpUser(UserVO vo) {
 	
-		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
+		try {
+			
+			vo.setUserPw(bEncoder.encode(vo.getUserPw()));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return userDao.insertUser(vo) & userDao.insertAuth(giveAuth(vo.getUserId()));
 	}
@@ -47,6 +52,11 @@ public class UserServiceImpl implements UserService {
 	public boolean findUserById(String userId) {
 		
 		return userDao.searchUser(userId)==1 ? true : false ;
+	}
+
+	@Override
+	public UserVO readUser(String userId) {
+		return userDao.read(userId);
 	}
 	
 	

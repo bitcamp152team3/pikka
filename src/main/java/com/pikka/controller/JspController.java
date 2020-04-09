@@ -4,7 +4,6 @@ import java.security.Principal;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -106,7 +105,6 @@ public class JspController {
 	@PostMapping("/kakaoPay")
 	public String kakaoPay(PayVO pays) {
 		this.pay = pays;
-		log.info("kakaoPay post............................................");
 		pays.setUserId(pays.getUserId().trim());
 		return "redirect:" + kakaopay.kakaoPayReady(pays);
 	}
