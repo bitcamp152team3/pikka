@@ -58,7 +58,15 @@ public class LoginController {
 	public String deleteProcess(String userId) {
 		log.info("삭제할 유저의 ID : " + userId);
 		
-		lockerService.updateLocState(new Locker(lockerService.getTicket(userId).getLockerNo(),0));
+		
+		/* 라커서비스 Nullpointer exception 예외처리 필요
+		 * 
+		 * 
+		*/
+		/*
+		 * lockerService.updateLocState(new
+		 * Locker(lockerService.getTicket(userId).getLockerNo(),0));
+		 */
 		
 		log.info("유저 삭제 여부 : " + userService.deleteUser(userId));
 		return "redirect:/logout";

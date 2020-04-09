@@ -38,11 +38,11 @@
 
 
 
-	<error-page>
+<!-- 	<error-page>
 		<location>/errors</location>
 	</error-page>
 
-
+ -->
 	<!-- filter -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
