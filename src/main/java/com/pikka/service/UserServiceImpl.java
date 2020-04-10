@@ -59,6 +59,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.read(userId);
 	}
 	
+	@Override
+	public boolean modifyUser(UserVO vo) {
+		vo.setUserPw(bEncoder.encode(vo.getUserPw()));
+		return userDao.updateUser(vo);
+	}
+
+	
 	
 
 	

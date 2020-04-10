@@ -35,7 +35,7 @@
 			<h4>나의 이용권</h4>
 			<br>
 			<div class="row justify-content-center">
-			 <br>
+				<br>
 				<div class="table-responsive table-bordered">
 					<table class="table">
 						<thead>
@@ -98,41 +98,46 @@
 			<h4>회원 정보</h4>
 		</div>
 		<div class="row justify-content-center">
-
 			<div class="col-md-6 col-cs-12 md-auto">
-
 				<form class="needs-validation" action="/user/modify" method="post">
-
+					<hr>
 					<div class="mb-3">
-						<label for="userId">아이디<span class="text-muted"></span></label> <input
-							type="text" class="form-control" id="userId"
+						<label for="userId">아이디<span class="text-muted">(필수)</span></label>
+						<input type="text" class="form-control" id="userId"
 							value="${userVO_sc.userId}" name="userId" readonly>
 					</div>
-
 					<div class="mb-3">
-						<label for="userId">이름</label>
+						<label for="userId">이름<span class="text-muted">(필수)</span></label>
 						<div class="input-group">
-
 							<input type="text" class="form-control" id="userName"
-								readonly="readonly" name="userName"
-								value="${userVO_sc.userName}">
+								name="userName" value="${userVO_sc.userName}" readonly>
 						</div>
 					</div>
 					<div class="mb-3">
-						<label for="userTel">전화번호 </label> <input type="tel"
-							class="form-control" id="userTel" value="${userVO_sc.userTel}">
+						<label for="userTel">전화번호</label>
+						<div class="input-group">
+							<input type="text" class="form-control" id="userTel"
+								name="userTel" placeholder="전화번호를 작성해 주세요.">
+						</div>
+					</div>
+					<div class="mb-3">
+						<label for="userPw">비밀번호</label>
+						<div class="input-group">
+							<input type="text" class="form-control" id="userPw" name="userPw"
+								placeholder="비밀번호를 작성해 주세요.">
+						</div>
 					</div>
 					<hr class="mt-4 mb-4">
 
-					<button data-oper="modfiy" class="btn btn-dark btn-lg btn-block"
-						type="submit" id="userModify">회원 수정</button>
-					<button data-oper="delete" class="btn btn-dark btn-lg btn-block"
-						type="submit" id="userDelete">회원 탈퇴</button>
+					<button onclick="if(!(confirm('다시 로그인 해 주세요.'))) return false;"
+						data-oper="modify" class="btn btn-dark btn-lg btn-block"
+						type="submit" id="modifyUser">회원 수정</button>
+					<button onclick="if(!(confirm('다시 로그인 해 주세요.'))) return false;"
+						data-oper="delete" class="btn btn-dark btn-lg btn-block"
+						type="submit" id="delete">회원 탈퇴</button>
 				</form>
 			</div>
 		</div>
-
-
 		<script type="text/javascript">
 			$(document).ready(function() {
 				var formObj = $("form");
@@ -166,10 +171,15 @@
 			</ul>
 		</footer>
 	</div>
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
 
 	<%@ include file="/WEB-INF/views/pikka/footer.jsp"%>
 </body>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#userTel').mask('010-9999-9999');
+	});
+</script>
 </html>
-l>
