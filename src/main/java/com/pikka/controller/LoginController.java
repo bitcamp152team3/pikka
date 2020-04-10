@@ -3,6 +3,7 @@ package com.pikka.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pikka.domain.Locker;
 import com.pikka.domain.UserVO;
@@ -73,9 +76,10 @@ public class LoginController {
 	}
 	
 	// 아이디 중복 검사
-	@GetMapping("/user/search")
-	public String searcchProcess(String userId) {
+	@RequestMapping(method = RequestMethod.GET, value = "user/search", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE})
+	@ResponseBody
+	public boolean searchProcess(@RequestParam("userId") String userId) {
 		
-		return "abcd";
+		return userService.findUserById(userId);
 	}
 }

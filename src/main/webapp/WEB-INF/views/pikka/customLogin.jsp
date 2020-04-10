@@ -19,7 +19,7 @@
 
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/pikka/nav.jsp" flush="true" />
+	<%@ include file="/WEB-INF/views/pikka/nav.jsp" %>
 
 	<div class="container">
 		<div class="text-center">
@@ -39,7 +39,7 @@
 					<hr>
 					<div class="mb-3">
 						<label for="userId">아이디<span class="text-muted"></span></label> <input
-							type="text" class="form-control" name="username" placeholder="ID">
+							type="text" class="form-control" id="username" name="username" placeholder="ID">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
 					</div>
 					<div class="mb-3">
@@ -60,7 +60,7 @@
 					<c:if test="${not empty error}">
 						<div class="alert alert-danger" role="alert">${error}</div>
 					</c:if>
-					<button class="btn btn-dark btn-lg btn-block" type="submit">
+					<button class="btn btn-dark btn-lg btn-block" id="loginButton" type="submit">
 						로그인</button>
 						<a href="${naverUrl}">네이버 가즈아</a>
 				</form>

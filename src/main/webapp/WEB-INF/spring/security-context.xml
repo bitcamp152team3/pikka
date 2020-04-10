@@ -10,9 +10,7 @@
 
 <!-- 로그인 컨트롤러 관련 커스터마이징 -->
 <bean id="customerUserDetailsService" class="com.pikka.security.CustomerUserDetailsService"/>
-
 <bean id="customLoginSuccess" class="com.pikka.security.CustomLoginSuccessHandler"></bean>
-
 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 
 <security:http>

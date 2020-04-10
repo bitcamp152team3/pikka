@@ -18,17 +18,11 @@ public class CustomerUserDetailsService implements UserDetailsService {
 
 	@Autowired
 	private UserDao userDao;
-	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
 		log.warn("load user by user name : " + username);
-
 		UserVO vo = userDao.read(username);
-		
 		log.warn(vo);
-		
-		
 		return vo == null ? null : new CustomUser(vo);
 	}
 

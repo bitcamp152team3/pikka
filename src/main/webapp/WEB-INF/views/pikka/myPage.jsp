@@ -25,6 +25,7 @@
 	<jsp:include page="/WEB-INF/views/pikka/nav.jsp" flush="true" />
 
 	<security:authentication property="principal.userVO" var="userVO_sc" />
+	
 	<div class="container">
 		<div class="">
 			<h1>My Page</h1>
