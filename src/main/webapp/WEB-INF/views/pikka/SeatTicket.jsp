@@ -37,7 +37,7 @@
 		
 		<div class="radio" style="margin-left: 5px;">
 			<label> 
-				<input type="radio" name="optionsRadios" checked="checked" id="1" value="1"> 1시간 : 3000원
+				<input type="radio" name="optionsRadios" id="1" value="1"> 1시간 : 3000원
 			</label>
 		</div>	
 		<div class="radio" style="margin-left: 5px;">
@@ -111,6 +111,8 @@
 			var now = new Date();
 			var input = 0;
 			
+			
+			
 			function getFormatTime(date,input) {
 				var date = new Date();
 				var nowHours = date.getHours()+input;
@@ -120,7 +122,8 @@
 			}			
 			
 			console.log(getFormatTime(now,input));
-			$('input[name="optionsRadios"]').click(function(){										
+			$('input[name="optionsRadios"]').click(function(){
+				
 				var times = $('input[name="optionsRadios"]:checked').val();
 				var price;
 				var inputH=0;

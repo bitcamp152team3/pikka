@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.pikka.dao.SeatDao;
 import com.pikka.dao.SeatTicketDao;
-import com.pikka.domain.LockerTicket;
 import com.pikka.domain.Seat;
 import com.pikka.domain.SeatTicket;
 
@@ -39,28 +38,28 @@ public class SeatServiceImpl implements SeatService {
 	}	
 
 	@Override
-	public int insert(SeatTicket seatticket) {
+	public int insert(SeatTicket seatTicket) {
 		// TODO Auto-generated method stub
 		
-		return seatTicketDao.insert(seatticket);		
+		return seatTicketDao.insert(seatTicket);		
 	}
 
 	@Override
-	public int updateOne(SeatTicket seatTicket) {
+	public int updateOne() {
 		// TODO Auto-generated method stub
-		return seatTicketDao.updateOne(seatTicket);
+		return seatTicketDao.updateOne();
 	}
 	@Override
-	public int updateZero(SeatTicket seatTicket) {
+	public int updateZero() {
 		// TODO Auto-generated method stub
-		return seatTicketDao.updateZero(seatTicket);
+		return seatTicketDao.updateZero();
 	}
 
 	@Override
 	
-	public int updateCurrent(SeatTicket seatTicket) {
+	public int updateCurrent() {
 		// TODO Auto-generated method stub
-		return seatTicketDao.updateCurrent(seatTicket);
+		return seatTicketDao.updateCurrent();
 	}
 	
 	
@@ -76,9 +75,5 @@ public class SeatServiceImpl implements SeatService {
 		return seatDao.seatCount();
 	}
 
-	@Override
-	public boolean delete() {
-		// TODO Auto-generated method stub
-		return seatTicketDao.delete();
-	}
+	
 }

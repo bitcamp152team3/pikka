@@ -37,14 +37,14 @@ public class KakaoPay {
 		this.pay = pays;
 		RestTemplate restTemplate = new RestTemplate();
 
-		// 서버로 요청할 Header
+		// �꽌踰꾨줈 �슂泥��븷 Header
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "KakaoAK " + "2c434e9ab5359a6b46286513f6e2df7a");
 		headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 		headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 
 		// payType
-		// 서버로 요청할 Body
+		// �꽌踰꾨줈 �슂泥��븷 Body
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 
 		params.add("cid", "TC0ONETIME");
@@ -54,24 +54,15 @@ public class KakaoPay {
 		params.add("tax_free_amount", "0");
 
 		if (pay.getProductType().equals("locker")) {
-			params.add("item_name", Integer.toString(pay.getLocType()) + "일권");
+			params.add("item_name", Integer.toString(pay.getLocType()) + "�씪沅�");
 			params.add("total_amount", pay.getLocPrice());
-			params.add("useDays", pay.getLocUseDays()); // 사물함 사용기간
-			params.add("locNo", pay.getLocNo()); // 사물함 번호
+			params.add("useDays", pay.getLocUseDays()); // �궗臾쇳븿 �궗�슜湲곌컙
+			params.add("locNo", pay.getLocNo()); // �궗臾쇳븿 踰덊샇
 			params.add("approval_url", "http://localhost:8080/kakaoPaySuccess");
 			params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
 			params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
 		}
-
-		if (pay.getProductType().equals("seat")) {
-			params.add("item_name", Integer.toString(pay.getSeatType()) + "시간권");
-			params.add("total_amount", Integer.toString(pay.getSeatPrice()));
-			params.add("seatNo", pay.getSeatNo()); // 사물함 번호
-			params.add("approval_url", "http://localhost:8080/kakaoPaySuccessSeat");
-			params.add("cancel_url", "http://localhost:8080/kakaoPayCancel");
-			params.add("fail_url", "http://locaSlhost:8080/kakaoPaySuccessFail");
-		}
-
+		
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 		try {
 			kakaoPayReadyVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body,
@@ -96,32 +87,28 @@ public class KakaoPay {
 
 		RestTemplate restTemplate = new RestTemplate();
 
-		// 서버로 요청할 Header
+		// �꽌踰꾨줈 �슂泥��븷 Header
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "KakaoAK " + "2c434e9ab5359a6b46286513f6e2df7a");
 		headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 		headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 
-		// 서버로 요청할 Body
+		// �꽌踰꾨줈 �슂泥��븷 Body
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");
 		params.add("tid", kakaoPayReadyVO.getTid());
 		params.add("partner_order_id", pay.getUserId());
-		params.add("partner_user_id", pay.getUserId()); // 유저정보
+		params.add("partner_user_id", pay.getUserId()); // �쑀���젙蹂�
 		params.add("pg_token", pg_token);
 
 		if (pay.getProductType().equals("locker")) {
-			params.add("total_amount", pay.getLocPrice()); // 가격
-			params.add("item_name", Integer.toString(pay.getLocType())); // 사물함 이용권종류
-			params.add("useDays", pay.getLocUseDays()); // 사물함 사용기간
-			params.add("locNo", pay.getLocNo()); // 사물함 번호
+			params.add("total_amount", pay.getLocPrice()); // 媛�寃�
+			params.add("item_name", Integer.toString(pay.getLocType())); // �궗臾쇳븿 �씠�슜沅뚯쥌瑜�
+			params.add("useDays", pay.getLocUseDays()); // �궗臾쇳븿 �궗�슜湲곌컙
+			params.add("locNo", pay.getLocNo()); // �궗臾쇳븿 踰덊샇
 		}
 
-		if (pay.getProductType().equals("seat")) {
-			params.add("total_amount", Integer.toString(pay.getSeatPrice())); // 가격
-			params.add("item_name", Integer.toString(pay.getSeatType())); // 사물함 이용권종류		
-			params.add("seatNo", pay.getSeatNo()); // 사물함 번호
-		}
+		
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 
 		try {

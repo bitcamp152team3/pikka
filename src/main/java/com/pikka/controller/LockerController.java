@@ -35,12 +35,11 @@ public class LockerController {
 		return "/pikka/errors";
 	}
 
-	//사물함 현황 클릭시
+	//�궗臾쇳븿 �쁽�솴 �겢由��떆
 	@RequestMapping(value = "/LockerStatus")
 	public String goLockerStatus(Model model) {
 
-		log.info("------lockerStatus-------");
-		//사물함 만료된 것들 있으면 status변경
+		log.info("------lockerStatus-------");		
 		LocalDate date = LocalDate.now();
 		String today = date.minusDays(1).toString();
 		List<String> endList = service.getEndLocker(today);
@@ -63,10 +62,10 @@ public class LockerController {
 	}
 
 
-	/* --------------------카드 결제 관련 --------------------- */
+	/* --------------------移대뱶 寃곗젣 愿��젴 --------------------- */
 	@PostMapping("/cardPay")
 	public String cardPay(PayVO pays, Model model) {
-		// 결제성공 -> 이용권 추가
+		// 寃곗젣�꽦怨� -> �씠�슜沅� 異붽�
 		LockerTicket locTicket = new LockerTicket(pays.getLocNo(), pays.getUserId(),
 				pays.getLocType(), Integer.parseInt(pays.getLocPrice()));
 		service.registerTicket(locTicket);
@@ -78,7 +77,7 @@ public class LockerController {
 		return "pikka/carPaySuccess";
 	}
 
-	/* --------------------카카오 페이 관련 --------------------- */
+	/* --------------------移댁뭅�삤 �럹�씠 愿��젴 --------------------- */
 	
 //	@GetMapping("/kakaoPay")
 //	public String kakaoPayGet() {
@@ -98,7 +97,7 @@ public class LockerController {
 		log.info("kakaoPaySuccess get.................pg_token : " + pg_token);
 		model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
 
-		// 결제성공 -> 이용권 추가
+		// 寃곗젣�꽦怨� -> �씠�슜沅� 異붽�
 		LockerTicket locTicket = new LockerTicket(pay.getLocNo(), pay.getUserId(),
 				pay.getLocType(), Integer.parseInt(pay.getLocPrice()));
 		service.registerTicket(locTicket);

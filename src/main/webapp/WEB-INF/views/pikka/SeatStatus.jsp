@@ -308,29 +308,13 @@
 			if (checkSC != "anonymousUser") {
 				//체크박스를 클릭하면 locNo
 				$("input").click(function(e) {
-					if (seatNo == null) {
+				
 						seatNo = this.id;
 						console.log("선택한 좌석: " + seatNo);
 						$('#myModalLabel').text(seatNo + "번 좌석 결제");
-					} else if (seatNo == this.id) { //기존좌석을 다시 클릭하는 경우 => 체크해제
-						seatNo = null;
-					} else { //다른좌석이 선택되있는 상태에서 또 누를 경우 locNo=1A 처럼 값이 있는 경우
-						alert("선택된 좌석이 있습니다.");
-						e.preventDefault();
-					}
+					
 				});
-
-				//선택하기 버튼 눌렀을 때
-				$('#scLocBtn').click(function(e) {
-					if (seatNo == null) { //사물함이 선택되지 않은 상태일때
-						alert("좌석을 선택하세요.");
-						e.stopPropagation();
-						return;
-					}
-
-					console.log("결제할 사물함 번호: " + seatNo);
-				});
-
+				
 				$('#payOk').click(function(e) {
 					e.stopPropagation();
 					e.preventDefault();

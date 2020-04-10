@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.pikka.domain.PayVO;
-import com.pikka.service.KakaoPay;
 import com.pikka.service.LockerService;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +20,23 @@ public class CommonController {
 	
 	private LockerService service;
 	
+	@RequestMapping(value = "/aa")
+	public String boardGet() {
+		return "/pikka/boardGet";
+	}
+	@RequestMapping(value = "/bb")
+	public String boardList() {
+		return "/pikka/boardList";
+	}
+	@RequestMapping(value = "/cc")
+	public String boardModify() {
+		return "/pikka/boardModify";
+	}
+	@RequestMapping(value = "/dd")
+	public String boardRegister() {
+		return "/pikka/boardRegister";
+	}
+
 	@RequestMapping(value = "/")
 	public String main() {
 		return "/pikka/main";
@@ -34,8 +49,8 @@ public class CommonController {
 
 	@GetMapping("/myPage")
 	public String nav(Model model, Principal principal) {
-		log.info("락커티켓 =============>"+ service.getTicket(principal.getName()));
-		//락커티켓 추가
+		log.info("�씫而ㅽ떚耳� =============>"+ service.getTicket(principal.getName()));
+		//�씫而ㅽ떚耳� 異붽�
 		model.addAttribute("locTicket", service.getTicket(principal.getName()));
 		
 		

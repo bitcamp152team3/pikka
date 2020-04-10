@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/pikka/controller/CommonController.java=UTF-8
+encoding//src/main/java/com/pikka/controller/LockerController.java=UTF-8
 encoding//src/main/java/com/pikka/controller/MailController.java=UTF-8
+encoding//src/main/java/com/pikka/controller/SeatController.java=UTF-8
+encoding//src/main/java/com/pikka/domain/PayVO.java=UTF-8
+encoding//src/main/java/com/pikka/service/KakaoPay.java=UTF-8

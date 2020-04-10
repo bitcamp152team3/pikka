@@ -10,12 +10,12 @@
 	</insert>			
 
  	<select id="getUseList" resultType="com.pikka.domain.SeatTicket">
-  		select * from seatTicket ORDER BY seatAvailableTime ASC
+  		<![CDATA[select * from seatTicket where seatAvailableTime > 0 ORDER BY seatAvailableTime ASC]]>
   	</select> 
 	<select id="get" resultType="com.pikka.domain.SeatTicket">
 		select * from seatTicket where userId = #{userId}
 	</select>
-	<update id="updateCurrent">
+	<update id="updateCurrent">	
 		UPDATE seatTicket SET seatStartTime = CURTIME(), 
 		seatAvailableTime = SUBTIME(seatEndTime,CURTIME()) where userId IS NOT NULL
 	</update>
@@ -25,11 +25,9 @@
 	</update>
 	
 	<update id="updateZero">
-		UPDATE seat A INNER JOIN seatTicket B ON A.seatNo = B.seatNo SET A.seatStatus = 0
+		 <![CDATA[UPDATE seat A INNER JOIN seatTicket B ON A.seatNo=B.seatNo SET A.seatStatus = 0 WHERE seatAvailableTime <= 0]]>
 	</update>
-	
-	<delete id="delete">
-		<![CDATA[DELETE FROM seatTicket WHERE seatAvailableTime <= 0]]>
-	</delete>
+
 </mapper>
+  
   

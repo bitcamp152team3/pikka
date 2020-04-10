@@ -8,19 +8,14 @@ import lombok.Data;
 public class PayVO {
 	
 	private String userId;
-	private String productType; //사물함인지 락커인지
+	private String productType; //�궗臾쇳븿�씤吏� �씫而ㅼ씤吏�
 	
-	//사물함일때
-	private String locNo; //락커번호
-	private int locType; //락커타입 30/60/90
-	private String locPrice; //가격
-	private String locUseDays; //사용기간 3/8~7/5
+	//�궗臾쇳븿�씪�븣
+	private String locNo; //�씫而ㅻ쾲�샇
+	private int locType; //�씫而ㅽ��엯 30/60/90
+	private String locPrice; //媛�寃�
+	private String locUseDays; //�궗�슜湲곌컙 3/8~7/5
 
-	//좌석일때
-	private int seatTicketNo;
-	private String seatNo;
-	private int seatType;
-	private int seatPrice;
 
 
 }

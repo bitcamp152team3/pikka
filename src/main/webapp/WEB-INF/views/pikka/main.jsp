@@ -127,7 +127,6 @@
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 	<script>
 		$(document).ready(function() {
-
 			//ajax를 이용 기존이용권이 있는지 체크
 			$.ajax({
 				type : 'get',

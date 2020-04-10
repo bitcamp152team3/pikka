@@ -1,7 +1,6 @@
 package com.pikka.controller;
 
 import java.security.Principal;
-import java.time.LocalTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,31 +22,25 @@ public class SeatController {
 	private SeatService service;
 	
 	@RequestMapping(value = "/SeatStatus")
-	public String goSeatStatus(Model model, SeatTicket seatTicket) {
+	public String goSeatStatus(Model model) {
 		log.info("-------------SeatStatus--------------");
-		// LocalTime time = LocalTime.now();
-				
-		service.delete();
-		if(service.delete()) {
-			service.updateZero(seatTicket);		
-		}
+		// LocalTime time = LocalTime.now();		
 		
-		service.updateCurrent(seatTicket);
-		model.addAttribute("seat", service.getUseList());
-	
+		service.updateZero();
+		service.updateCurrent();		
+		model.addAttribute("seat", service.getUseList());	
 		return "/pikka/SeatStatus";
-
 	}
 
 	/*
 	 * @RequestMapping(value="/SeatTicket") public String SeatTicket(Model model) {
 	 * log.info("-------------SeatTicketType--------------");
 	 * model.addAttribute("seatticket", service.getSeatTicketInfo()); return
-	 * "/pikka/SeatTicket"; }
-	 */
+	 * "/pikka/SeatTicket"; }	 */
 
 	@PostMapping(value = "/SeatTicket")
 	public String SeatTicket(Model model, String seatNo) {
+		
 		model.addAttribute("seatNo", seatNo);
 		return "/pikka/SeatTicket";
 	}
@@ -63,10 +56,11 @@ public class SeatController {
 	
 	@PostMapping("/cardPaySeat")
 	public String cardPay(Model model, SeatTicket seatTicket, Principal principal) {
-		// 결제성공 -> 이용권 추가
+		// 寃곗젣�꽦怨� -> �씠�슜沅� 異붽�
 		seatTicket.setUserId(principal.getName());	
-		service.insert(seatTicket);			
-		service.updateOne(seatTicket);	
+		
+		service.insert(seatTicket);		
+		service.updateOne();	
 		model.addAttribute("ticket", service.getTicket(seatTicket.getUserId()));
 		log.info(seatTicket);
 		return "pikka/carPaySuccessSeat";

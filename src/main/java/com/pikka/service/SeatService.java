@@ -14,10 +14,10 @@ public interface SeatService {
 	
 	public SeatTicket getTicket(String userId);
 	
-	public int insert(SeatTicket seatticket);
-	public int updateOne(SeatTicket seatTicket);
-	public int updateZero(SeatTicket seatTicket);
-	public int updateCurrent(SeatTicket seatTicket);
+	public int insert(SeatTicket seatTicket);
+	public int updateOne();
+	public int updateZero();
+	public int updateCurrent();
 	public int seatCount();
-	public boolean delete();
+
 }
