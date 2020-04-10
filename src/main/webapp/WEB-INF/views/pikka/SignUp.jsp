@@ -44,6 +44,7 @@
 						<input type="text" class="form-control" id="userId" name="userId"
 							placeholder="영문, 숫자포함 8~12자리 이내">
 						<div class="invalid-feedback">아이디를 입력하세요.</div>
+						<div id="username_check"></div>
 					</div>
 					<div class="mb-3">
 						<label for="userPw">패스워드<span class="text-muted">(필수)</span></label>
@@ -75,7 +76,7 @@
 					<input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
 
-					<button class="btn btn-dark btn-lg btn-block" type="submit">회원
+					<button class="btn btn-dark btn-lg btn-block" id="loginButton" " type="submit">회원
 						가입</button>
 
 				</form>
@@ -93,7 +94,38 @@
 	</div>
 	<script src="resources/js/signUpValidate.js"></script> 
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<script>
+	console.log("왜안되냐");
+	$("#userId").blur(function(e){
+		
+		var user_id = $('#userId').val();
+		console.log(user_id);
+		
+		
+		$.ajax({
+			url : '/user/search?userId='+user_id,
+			type : 'get',
+			success : function(data) {
+				console.log(data);
 
+				if(data == true){
+					$('#username_check').text("사용중인 아이디야");
+					$('#username_check').css("color", "red");
+					$('#loginButton').attr('disabled', 'disabled');
+				}
+				else {
+					$('#username_check').text("");
+					$('#loginButton').removeAttr('disabled');
+				}
+				
+			}, 
+			error : function(){
+				console.log("fail");
+			}
+		});
+		
+	});
+	</script>
 
 	<%@ include file="/WEB-INF/views/pikka/footer.jsp"%>
 	

@@ -15,7 +15,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:mysql://localhost/pikka" />
 		<property name="username" value="root" />
-		<property name="password" value="poiuy7288872!" />
+		<property name="password" value="1234" />
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -56,6 +56,13 @@
 				<prop key="mail.smtp.starttls.enable">true</prop>
 			</props>
 		</property>
+	</bean>
+	
+	<bean id="baseOAuth2ProtectedResourceDetails" class="org.springframework.security.oauth2.client.resource.BaseOAuth2ProtectedResourceDetails">
+	<property name="clientId" value="723249418329-n18mfk6o5o5qqvdca4f36vrerdajt317"/>
+	<property name="clientSecret" value="i35-Oz9VyzPf6NaIpYdxMx6N"/>
+	<property name="accessTokenUri" value="https://www.googleapis.com/oauth2/v4/token"/>
+	<property name="tokenName" value=""></property>
 	</bean>
 
 

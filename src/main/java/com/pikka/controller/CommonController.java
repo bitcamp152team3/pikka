@@ -53,7 +53,7 @@ public class CommonController {
 	public String main() {
 		return "/pikka/main";
 	}
-
+	
 	@GetMapping("/SignUp")
 	public String signUp() {
 		return "/pikka/SignUp";
@@ -89,8 +89,6 @@ public class CommonController {
 			model.addAttribute("logout", "LoginError Check Your account");
 
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-		log.info("==== naverAuthUrl ===");
-		log.info(naverAuthUrl);
 
 		model.addAttribute("naverUrl", naverAuthUrl);
 
@@ -128,8 +126,6 @@ public class CommonController {
 
 		UserDetails userDetails = a.loadUserByUsername(userId);
 
-		log.info("유저 디에틸" + userDetails);
-		log.info(userDetails.getAuthorities());
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		securityContext.setAuthentication(
 				new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities()));
@@ -141,5 +137,6 @@ public class CommonController {
 		return "redirect:/";
 
 	}
+	
 
 }
