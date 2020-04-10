@@ -128,11 +128,11 @@
 						</div>
 					</div>
 					<hr class="mt-4 mb-4">
-
-					<button onclick="if(!(confirm('다시 로그인 해 주세요.'))) return false;"
-						data-oper="modify" class="btn btn-dark btn-lg btn-block"
+		
+					<button 
+						data-oper="modify" class="btn btn-dark btn-lg btn-block" onclick="if(!(confirm('수정되었습니다. 다시 로그인 해 주세요.'))) return false;"
 						type="submit" id="modifyUser">회원 수정</button>
-					<button onclick="if(!(confirm('다시 로그인 해 주세요.'))) return false;"
+					<button onclick="if(!(confirm('탈퇴되었습니다.'))) return false;"
 						data-oper="delete" class="btn btn-dark btn-lg btn-block"
 						type="submit" id="delete">회원 탈퇴</button>
 				</form>

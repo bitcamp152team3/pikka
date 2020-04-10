@@ -51,14 +51,14 @@ public class LoginController {
 	public String modifyProcess(@Validated UserVO vo) {
 		log.info(vo);
 		userService.modifyUser(vo);
-		return "pikka/customLogin";
+		return "redirect:/logout";
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String deleteUser(String userId) {
 		log.info(userId);
 		userService.deleteUser(userId);
-		return "pikka/customLogin";
+		return "redirect:/logout";
 	}
 	
 //	@PostMapping("/delete")
