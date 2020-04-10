@@ -15,7 +15,7 @@
 		<property name="jdbcUrl"
 			value="jdbc:log4jdbc:mysql://localhost/pikka" />
 		<property name="username" value="root" />
-		<property name="password" value="1234" />
+		<property name="password" value="poiuy7288872!" />
 	</bean>
 
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"

@@ -15,4 +15,6 @@ public interface UserService {
 	
 	public UserVO readUser(String userId);
 	
+	public boolean modifyUser(UserVO vo);
+	
 }

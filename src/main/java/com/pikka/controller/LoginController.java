@@ -47,30 +47,37 @@ public class LoginController {
 		return "pikka/customLogin";
 	}
 	
-	@PostMapping("/user/modify")
-	public String modifyProcess(UserVO vo) {
-		log.info("===수정되는 회원 정보===");
+	@RequestMapping(value = "/user/modify", method = RequestMethod.POST)
+	public String modifyProcess(@Validated UserVO vo) {
 		log.info(vo);
-		return "redirect:/";
-	}
-	
-	@PostMapping("/delete")
-	public String deleteProcess(String userId) {
-		log.info("삭제할 유저의 ID : " + userId);
-		
-		
-		/* 라커서비스 Nullpointer exception 예외처리 필요
-		 * 
-		 * 
-		*/
-		/*
-		 * lockerService.updateLocState(new
-		 * Locker(lockerService.getTicket(userId).getLockerNo(),0));
-		 */
-		
-		log.info("유저 삭제 여부 : " + userService.deleteUser(userId));
+		userService.modifyUser(vo);
 		return "redirect:/logout";
 	}
+	
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String deleteUser(String userId) {
+		log.info(userId);
+		userService.deleteUser(userId);
+		return "redirect:/logout";
+	}
+	
+//	@PostMapping("/delete")
+//	public String deleteProcess(String userId) {
+//		log.info("삭제할 유저의 ID : " + userId);
+//		
+//		
+//		/* 라커서비스 Nullpointer exception 예외처리 필요
+//		 * 
+//		 * 
+//		*/
+//		/*
+//		 * lockerService.updateLocState(new
+//		 * Locker(lockerService.getTicket(userId).getLockerNo(),0));
+//		 */
+//		
+//		log.info("유저 삭제 여부 : " + userService.deleteUser(userId));
+//		return "redirect:/logout";
+//	}
 	
 	// 아이디 중복 검사
 	@GetMapping("/user/search")
